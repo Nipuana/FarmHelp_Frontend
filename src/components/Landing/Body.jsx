@@ -4,6 +4,7 @@ import "../../css//LandingCss/Body.css";
 
 const Body = () => {
   return (
+    
     <div className="container">
     
       <div className="text-section">
@@ -12,7 +13,8 @@ const Body = () => {
           <span className="highlight">for farmers</span>
         </h1>
         <p>Everything that you can ever hope of</p>
-        <button className="register-button">Register</button>
+        <button className="registerr-button">Register</button>
+        <button className="loginn-button">Login</button>
       </div>
 
       
@@ -23,6 +25,7 @@ const Body = () => {
         />
       </div>
     </div>
+    
   );
 };
 

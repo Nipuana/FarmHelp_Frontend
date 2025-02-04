@@ -1,13 +1,14 @@
 // import React from 'react';
 import '../../css/LandingCss/Header.css'; // Create this file for styling
+import  logo from "../../images/logo.png";
 
 const Header = () => {
   return (
     <header className="header">
-      {/* Left Section: Logo and Name */}
+      
       <div className="logo-section">
-        <img src="/logo.png" alt="FarmHelp Logo" className="logo" />
-        <h1 className="site-name">FarmHelp</h1>
+        <img className='home_logo' src={logo} href="/" />
+        
       </div>
 
       {/* Middle Section: Navbar */}

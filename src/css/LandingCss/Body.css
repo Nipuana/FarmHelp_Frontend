@@ -5,7 +5,7 @@
     justify-content: space-between;
     background-color: #ebf7ee; 
     min-height: 80vh;
-    margin-top: 20px;
+    /* margin-top: 10px; */
     padding-bottom: 30px;
     padding: 40px;
     user-select: none;
@@ -38,7 +38,7 @@
     
   }
   
-  .register-button {
+  .registerr-button {
     background-color: #22c55e; 
     color: #fff; 
     padding: 12px 20px;
@@ -50,10 +50,33 @@
     transition: background-color 0.3s;
   }
   
-  .register-button:hover {
+  .registerr-button:hover {
     background-color: #16a34a; 
   }
+  .registerr-button:active {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+    transform: translateY(2px); 
+}
   
+  .loginn-button {
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-left: 10px;
+  } 
+  .loginn-button:hover {
+    background-color: #16a34a; 
+    color: white;
+    transition: background-color 400ms;
+  }
+  .loginn-button:active {
+    box-shadow: 0 2px 4px rgba(16, 15, 15, 0.2); 
+    transform: translateY(2px); 
+}
+
   /* Image Section */
   .image-section {
     flex: 1;
@@ -63,8 +86,9 @@
     margin-left: 70px;
   }
   
-  .illustration {
+  
+  /* .illustration {
     max-width: 400px;
     width: 100%;
-  }
+  } */
   
