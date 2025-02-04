@@ -25,7 +25,7 @@ const Header = () => {
       {/* Right Section: Login and Register Buttons */}
       <div className="auth-buttons">
         <button className="login-button">Login</button>
-        <button className="register-button">Register</button>
+        <button className="register-button">Sign Up</button>
       </div>
     </header>
   );
