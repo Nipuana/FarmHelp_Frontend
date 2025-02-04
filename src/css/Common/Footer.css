@@ -20,6 +20,8 @@
   .footer-logo-img {
     width: 50px;
     margin-bottom: 10px;
+    width: 100px; 
+    height: auto;
   }
   
   .footer-section {

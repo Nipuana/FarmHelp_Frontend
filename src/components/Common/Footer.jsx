@@ -1,12 +1,13 @@
 import React from "react";
 import "../../css/Common/Footer.css";
+import  Wlogo from "../../images/white_logo.png";
 
 const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-logo">
-          <img src="/path-to-logo.png" alt="Logo" className="footer-logo-img" />
+          <img src={Wlogo} alt="Logo" className="footer-logo-img" />
           
         </div>
         <div className="footer-section">

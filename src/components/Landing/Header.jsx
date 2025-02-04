@@ -7,8 +7,9 @@ const Header = () => {
     <header className="header">
       
       <div className="logo-section">
-        <img className='home_logo' src={logo} href="/" />
-        
+      <Link to="/">
+      <img className='home_logo' src={logo} alt="Logo" />
+      </Link>
       </div>
 
       {/* Middle Section: Navbar */}
