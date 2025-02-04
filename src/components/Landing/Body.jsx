@@ -1,5 +1,6 @@
 import React from "react";
-import "../../css/Body.css";
+import  bg from "../../images/landing_farmer.png";
+import "../../css//LandingCss/Body.css";
 
 const Body = () => {
   return (
@@ -17,7 +18,7 @@ const Body = () => {
       
       <div className="image-section">
         <img
-          src="FarmHelp_Frontend\src\images\m1_img.png"
+          src= {bg}
           alt="Farmer illustration"
         />
       </div>

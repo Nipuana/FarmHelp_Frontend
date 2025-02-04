@@ -6,7 +6,9 @@
     background-color: #ebf7ee;
     border-bottom: 1px solid #e0e0e0;
     width: 100%; 
+    /* margin: 5px; */
     box-sizing: border-box; 
+    /* border-radius: 40px; */
   }
   
   .logo-section {
