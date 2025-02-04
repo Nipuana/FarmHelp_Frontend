@@ -5,8 +5,8 @@
     padding: 10px 20px;
     background-color: #ebf7ee;
     border-bottom: 1px solid #e0e0e0;
-    width: 100%; /* Ensure it takes full width */
-    box-sizing: border-box; /* Include padding in width calculation */
+    width: 100%; 
+    box-sizing: border-box; 
   }
   
   .logo-section {
@@ -35,14 +35,14 @@
   
   .navbar .nav-links li {
     margin: 0 15px;
-    position: relative; /* Required for the underline effect */
+    position: relative; 
   }
   
   .navbar .nav-links a {
     text-decoration: none;
     color: #333;
     font-size: 17px;
-    position: relative; /* Required for the underline effect */
+    position: relative; 
   }
   
   /* Underline animation on hover */
@@ -50,19 +50,19 @@
     content: '';
     position: absolute;
     left: 0;
-    bottom: -5px; /* Adjust this value to control the distance of the underline from the text */
+    bottom: -5px; 
     width: 0;
     height: 2px;
-    background-color: #007bff; /* Color of the underline */
-    transition: width 0.3s ease; /* Animation duration and timing */
+    background-color: #218838; 
+    transition: width 0.3s ease; 
   }
   
   .navbar .nav-links a:hover::after {
-    width: 100%; /* Expand the underline to full width */
+    width: 100%; 
   }
   
   .navbar .nav-links a:hover {
-    color: #007bff; /* Change text color on hover */
+    color: #218838; 
   }
   
   .auth-buttons {
