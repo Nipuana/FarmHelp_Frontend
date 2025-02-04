@@ -1,13 +1,11 @@
 import React from 'react';
-import Header from './Header';
 import Body from "./Body";
 import Footer from '../Common/Footer';
 import '../../css/LandingCss/landingPage.css';
 
-function App() {
+function Landing() {
   return (
     <div className="App">
-      <Header />
       <p className='filler' >a</p>
       <Body/>
       <Footer/>
@@ -16,4 +14,4 @@ function App() {
   );
 }
 
-export default App;
+export default Landing;
