@@ -8,7 +8,7 @@ const NotFound = () => {
     <>
     <div className="not-found">
       <div className="content-box">
-        <img src={Eor} alt="Vector image for 404" />
+        <img className="img_404" src={Eor} alt="Vector image for 404" />
         <p>Oops! The page you are looking for does not exist.</p>
         <a href="/" className="home-link">Go Back to Home</a>
       </div>

@@ -13,6 +13,8 @@
     background-repeat: no-repeat;
     background-position: center;
     width: 100%;
+    user-select: none;
+    
     
   }
   
@@ -30,7 +32,9 @@
     align-items: center;
     padding: 50px;
   }
-  
+  .img_404{
+    -webkit-user-drag: none;
+  }
   .not-found p {
     font-size: 18px;
     color: #666;

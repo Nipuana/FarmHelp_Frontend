@@ -13,6 +13,10 @@
   width: 100%; 
   box-sizing: border-box; /* Include padding in the width calculation */
 }
+
+.img_bdy{
+  -webkit-user-drag: none;
+}
   
   /* Text Section */
   .text-section {
@@ -51,6 +55,10 @@
     margin-top: 15px;
   }
   
+  .registerr-button a{
+    text-decoration: none;
+    color: white;
+  }
   .registerr-button:hover {
     background-color: #16a34a; 
   }
@@ -69,10 +77,15 @@
     margin-left: 10px;
     margin-top: 15px;
   } 
+  .loginn-button a{
+    text-decoration: none;
+    color: black;
+  }
   .loginn-button:hover {
     background-color: #16a34a; 
     color: white;
     transition: background-color 400ms;
+    
   }
   .loginn-button:active {
     box-shadow: 0 2px 4px rgba(16, 15, 15, 0.2); 
