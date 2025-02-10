@@ -25,7 +25,7 @@ const loginFourm = () => {
                 <div className="other-options">
                     <button className="google-btn">Sign in with Google</button>
                 </div>
-                <p className="signup-text">Don’t you have an account? <a href="/signup">Sign up</a></p>
+                <p className="signup-text">Don’t you have an account? <a href="/Register">Sign up</a></p>
             </div>
             <div className="illustration">
                 <img src={img_i1} alt="Farmer illustration" />
