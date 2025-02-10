@@ -19,7 +19,6 @@ const Header = () => {
         <ul className="nav-links">
           <li><a href="/">Home</a></li>
           <li><a href="/product">Products</a></li>
-          {/* <li><a href="/rating">Rating</a></li> */}
           <li><a href="/reviews">Reviews</a></li>
           <li><a href="/about-us">About Us</a></li>
           <li><a href="/faqs">FAQs</a></li>
@@ -28,6 +27,7 @@ const Header = () => {
 
       
       <div className="auth-buttons">
+        
         <button className="login-button">Login</button>
         <button className="register-button">Sign Up</button>
       </div>

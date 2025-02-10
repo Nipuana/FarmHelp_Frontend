@@ -2,6 +2,7 @@ import React from "react";
 import "../../css/Common/Footer.css";
 import  Wlogo from "../../images/white_logo.png";
 
+
 const Footer = () => {
   return (
     <footer className="footer">
