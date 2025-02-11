@@ -10,8 +10,7 @@ body {
     align-items: center;
     justify-content: center;
     background-color: #ebf7ee;
-    min-height: 80vh;
-    padding: 60px;
+    padding: 40px;
     user-select: none;
     border-radius: 80px;
     margin: 40px auto;
@@ -23,7 +22,7 @@ body {
 
 .register_frm-box {
     background: #d8e8d5;
-    padding: 60px;
+    padding: 40px;
     width: 400px;
     display: flex;
     flex-direction: column;
