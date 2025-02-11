@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import '../../css/ProductCss/productListing.css';
+import err_img from '../../images/failed_product.png'
+// import err_img from '../../images/wow.png'
+import load_gif from '../../images/Loading.gif'
 
 const ProductListing = () => {
   const [products, setProducts] = useState([]);
@@ -16,7 +19,10 @@ const ProductListing = () => {
         setProducts(data);
         setLoading(false);
       } catch (err) {
-        setError('Failed to fetch products');
+        setError({
+          message: 'Failed to fetch products',
+          
+        });
         setLoading(false);
         console.error(err);
       }
@@ -30,11 +36,11 @@ const ProductListing = () => {
     if (existingItem) {
       setCart(cart.map(item => 
         item.id === product.id 
-          ? {...item, quantity: item.quantity + 1} 
+          ? { ...item, quantity: item.quantity + 1 } 
           : item
       ));
     } else {
-      setCart([...cart, {...product, quantity: 1}]);
+      setCart([...cart, { ...product, quantity: 1 }]);
     }
   };
 
@@ -46,8 +52,17 @@ const ProductListing = () => {
     return cart.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2);
   };
 
-  if (loading) return <div className="loading">Loading...</div>;
-  if (error) return <div className="error">{error}</div>;
+  if (loading) return <div className="loading">
+  <img src={load_gif} alt="Loading" className='loading-image'  />
+  </div>;
+  if (error) {
+    return (
+      <div className="error">
+        <img src={err_img} alt="Error" className="error-image" />
+        <p>{error.message}</p>
+      </div>
+    );
+  }
 
   return (
     <div className="product-page">

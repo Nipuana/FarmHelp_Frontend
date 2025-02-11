@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     scrollbar-width: thin;
-   
+    user-select: none;
+    -webkit-user-drag: none;
     /* background-color: gray; */
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import "../../css/Common/Footer.css";
 import  Wlogo from "../../images/white_logo.png";
+import { Link } from 'react-router-dom';
 
 
 const Footer = () => {
@@ -8,25 +9,26 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-logo">
+          <Link to="/">
           <img src={Wlogo} alt="Logo" className="footer-logo-img" />
-          
+          </Link>
         </div>
         <div className="footer-section">
           <h3>Company</h3>
           <ul>
-            <li><a href="#about">About us</a></li>
-            <li><a href="#review">Review</a></li>
-            <li><a href="#product">Product</a></li>
-            <li><a href="#rating">Rating</a></li>
-            <li><a href="#faqs">FAQs</a></li>
+            <li><a href="/about-us">About us</a></li>
+            <li><a href="reviews">Review</a></li>
+            <li><a href="/product">Product</a></li>
+            {/* <li><a href="/Rating">Rating</a></li> */}
+            <li><a href="/faqs">FAQs</a></li>
           </ul>
         </div>
         <div className="footer-section">
           <h2>Support</h2>
           <ul>
-            <li><a href="#terms">Terms of Service</a></li>
-            <li><a href="#privacy">Privacy Policy</a></li>
-            <li><a href="#status">Status</a></li>
+            <li><a href="/terms">Terms of Service</a></li>
+            <li><a href="/policy">Privacy Policy</a></li>
+            {/* <li><a href="#status">Status</a></li> */}
           </ul>
         </div>
         <div className="footer-section">

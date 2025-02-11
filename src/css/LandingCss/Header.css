@@ -9,6 +9,7 @@
     width: 100%; 
     box-sizing: border-box; 
     user-select: none;
+    z-index: 1000;
   }
   .home_logo{
     margin-left: 40px;

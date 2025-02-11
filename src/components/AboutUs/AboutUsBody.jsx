@@ -1,11 +1,17 @@
 import React from "react";
-import '../../css/AboutUsCss/AboutUsBody.css'
+import { Link } from 'react-router-dom';
+import '../../css/AboutUsCss/AboutUsBody.css';
+import Abt_bg from '../../images/AbtUs_bg.jpg';
+import tractor from '../../images/Tractor_1.jpeg';
+import sell1 from '../../images/sell1.png' 
+import sell2 from '../../images/sell2.png' 
+import sell3 from '../../images/sell3.png' 
 
 export default function AboutUs() {
   return (
     <div className="main-container">
       {/* Header Section */}
-      <header className="header-section" style={{ backgroundImage: "url('/path/to/your/image.jpg')" }}>
+      <header className="header-section" style={{ backgroundImage: `url(${Abt_bg})` }}>
         <div className="overlay"></div>
         <div className="header-content">
           <h1 className="header-title">About Us</h1>
@@ -18,12 +24,12 @@ export default function AboutUs() {
 
       {/* Main Section */}
       <main className="main-section">
-        <section className="intro-section">
+        {/* <section className="intro-section">
           <h2 className="section-title">Providing quality goods for farmers</h2>
           <p className="section-description">
             We maintain the quality of goods for all the products that we provide. If the rented products get damaged, we expect you to compensate us thoroughly.
           </p>
-        </section>
+        </section> */}
 
         {/* Products Section */}
         <section className="products-section">
@@ -32,11 +38,13 @@ export default function AboutUs() {
             <p className="product-description">
               We maintain the quality of goods for all the products that we provide. If the rented products get damaged, we expect you to compensate us thoroughly.
             </p>
+            <Link to="/product">
             <button className="product-button">Go To Products</button>
+            </Link>
           </div>
           <div className="product-image-container">
             <img
-              src="/path/to/tractor-image.jpg"
+              src={tractor}
               alt="Tractor in the field"
               className="product-image"
             />
@@ -50,37 +58,37 @@ export default function AboutUs() {
             {/* Service 1 */}
             <div className="service-item">
               <img
-                src="/path/to/service1-icon.png"
+                src={sell1}
                 alt="Farming tools"
                 className="service-icon"
               />
               <h3 className="service-title">Selling Farming Tools</h3>
               <p className="service-description">
-                Students practice at their own pace, first filling in gaps in their understanding and then accelerating their learning.
+                We provide farming tools for farmers that fulfils all their needs.
               </p>
             </div>
             {/* Service 2 */}
             <div className="service-item">
               <img
-                src="/path/to/service2-icon.png"
+                src={sell2}
                 alt="Farming chemicals"
                 className="service-icon"
               />
               <h3 className="service-title">Selling Farming Chemicals</h3>
               <p className="service-description">
-                Created by experts, library of trusted practices and lessons covers math, science, and more. Always here for learners and teachers.
+              We provide farming chemicals like pesticides and insecticides for farmers.
               </p>
             </div>
             {/* Service 3 */}
             <div className="service-item">
               <img
-                src="/path/to/service3-icon.png"
+                src={sell3}
                 alt="Renting machinery"
                 className="service-icon"
               />
               <h3 className="service-title">Selling and Renting Machineries</h3>
               <p className="service-description">
-                Teachers can identify gaps in their students' understanding, tailor instruction, and meet the needs of every student.
+                We sell as well as rent machines such as tractor for farmers.
               </p>
             </div>
           </div>

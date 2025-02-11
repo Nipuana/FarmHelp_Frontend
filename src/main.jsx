@@ -10,6 +10,7 @@ import Register from './components/Register/registerPage.jsx'
 import Product from './components/Product/productDashboard.jsx';
 import Login from './components/Login/loginPage.jsx';
 import Abt_US from './components/AboutUs/AboutUs.jsx'
+import FAQ from './components/faq/faq.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Header />
@@ -22,6 +23,7 @@ createRoot(document.getElementById('root')).render(
         <Route path='/product' element={<Product/>}/>
         <Route path='/Login' element={<Login/>}/>
         <Route path='/about-us' element={<Abt_US/>}/>
+        <Route path='/faqs' element={<FAQ />}/>
       </Routes>
     </Router>
   </StrictMode>

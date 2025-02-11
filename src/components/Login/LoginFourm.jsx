@@ -1,6 +1,7 @@
 import React from "react";
 import '../../css/LoginCss/loginFourm.css'; 
 import img_i1 from '../../images/login_farmer.png'; 
+// import img_i1 from '../../images/cotton1.png'; 
 
 const loginFourm = () => {
     return (
