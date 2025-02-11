@@ -1,11 +1,21 @@
 .faq-container {
-    max-width: 900px;
+    max-width: 1200px;
     margin: auto;
     font-family: Arial, sans-serif;
     min-height: 80vh;
+    background-color: #e6ffee;
+    border-radius: 80px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-right:20px ;
+    padding-left:20px ;
+    
   }
   
   h2 {
+    margin-top: 2px;
+    margin-left: 10px;
+    margin-bottom: 20px;
     font-size: 24px;
     font-weight: bold;
     text-align: left;
@@ -19,9 +29,8 @@
   .faq-list {
     width: 40%;
     background: #f9f9f9;
-    margin: 10px;
-    padding: 10px;
-    border-radius: 8px;
+    padding: 30px;
+    border-radius: 20px;
   }
   
   .faq-item {
@@ -29,6 +38,7 @@
     align-items: center;
     gap: 15px;
     justify-content: space-between;
+    margin-bottom: 10px;
     padding: 20px;
     cursor: pointer;
     border-bottom: 1px solid #ddd;
@@ -39,7 +49,7 @@
   .faq-item:hover,
   .faq-item.active {
     /* background: #e6e6ff; */
-    background-color: #e6ffee;
+    background-color: #d7e9dc;
     }
   
   .faq-icon {
