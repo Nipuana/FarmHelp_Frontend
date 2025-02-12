@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000"; // Update this if your backend is deployed
+const API_URL = "http://localhost:5000"; //Backend connection
 
 // Function to get authorization headers
 const getAuthHeaders = () => {
@@ -11,24 +11,24 @@ const getAuthHeaders = () => {
 // ====== AUTHENTICATION API ======
 export const registerUser = async (userData) => {
     try {
-        console.log("📤 Sending Registration Request:", userData);
+        console.log("Sending Registration Request:", userData);
         const response = await axios.post(`${API_URL}/users/register`, userData);
-        console.log("✅ Registration Response:", response.data);
+        console.log(" Registration Response:", response.data);
         return response;
     } catch (error) {
-        console.error("❌ API Registration Error:", error.response?.data || error.message);
+        console.error(" API Registration Error:", error.response?.data || error.message);
         throw error;
     }
 };
 
 export const loginUser = async (userData) => {
     try {
-        console.log("📤 Sending Login Request:", userData);
+        console.log(" Sending Login Request:", userData);
         const response = await axios.post(`${API_URL}/users/login`, userData);
-        console.log("✅ Login Response:", response.data);
+        console.log(" Login Response:", response.data);
         return response;
     } catch (error) {
-        console.error("❌ API Login Error:", error.response?.data || error.message);
+        console.error(" API Login Error:", error.response?.data || error.message);
         throw error;
     }
 };

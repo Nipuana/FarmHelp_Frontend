@@ -48,7 +48,7 @@ body {
   margin-top: 50px;
   margin-bottom: 50px;
   text-align: center;
-  background-color: #b8cbc4;
+  background-color: white;
   padding: 40px;
   border-radius: 20px;
 }
@@ -101,8 +101,9 @@ body {
   justify-content: center;
   /* text-align: center; */
   padding: 50px 10px;
-  background: #b8cbc4;
+  background: white;
   gap: 100px;
+  border-radius: 30px;
 }
 
 .info-text_h {
