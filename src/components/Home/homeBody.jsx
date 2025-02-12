@@ -1,6 +1,7 @@
 import React from "react";
 import "../../css/HomeCss/homeBody.css";
 import farmingImage from "../../images/dash_tbg.png"; 
+import illst_1 from '../../images/product_img.png'
 import sell1 from '../../images/sell1.png';
 import sell2 from '../../images/sell2.png';
 import sell3 from '../../images/sell3.png';
@@ -55,7 +56,7 @@ function App() {
           </p>
           <button className="learn-more_h">Learn More</button>
         </div>
-        <img src="./assets/illustration.png" alt="Illustration" className="info-image_h" />
+        <img src={illst_1} alt="Illustration" className="info-image_h" />
       </section>
     </div>
   );

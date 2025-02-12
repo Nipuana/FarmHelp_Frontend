@@ -102,12 +102,24 @@ body {
   /* text-align: center; */
   padding: 50px 10px;
   background: #b8cbc4;
+  gap: 100px;
 }
 
 .info-text_h {
   width: 80%;
   max-width: 500px;
+  font-size: 20px;
   line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.info-text_h h3 {
+  /* width: 80%; */
+  font-size: 40px;
+  max-width: 550px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+
 }
 
 .info-image_h {
@@ -123,8 +135,15 @@ body {
   padding: 10px 20px;
   cursor: pointer;
   font-size: 16px;
+  margin-top: 30px;
+  border-radius: 10px;
 }
 
 .learn-more_h:hover {
   background-color: #218838;
+}
+
+.learn-more_h:active {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+  transform: translateY(2px); 
 }
