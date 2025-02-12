@@ -1,0 +1,130 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container_h {
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ebf7ee;
+  min-height: 80vh;
+  padding: 40px;
+  user-select: none;
+  border-radius: 80px;
+  margin: 0 auto; 
+  max-width: 1500px; 
+  width: 100%; 
+  box-sizing: border-box; /* Include padding in the width calculation */
+}
+
+/* Hero Section */
+.hero_h {
+  position: relative;
+  text-align: center;
+}
+
+.hero-image_h {
+  /* width: 100%; */
+  /* height: auto; */
+  border-radius: 20px;
+}
+
+.hero-text_h {
+  position: absolute;
+  top: 13%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  color: black;
+  font-size: 24px;
+  font-weight: bold;
+  /* background: rgba(0, 0, 0, 0.5); */
+  padding: 10px 20px;
+}
+
+
+/* Services Section */
+.services-section_h {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  text-align: center;
+  background-color: #b8cbc4;
+  padding: 40px;
+  border-radius: 20px;
+}
+
+.services-grid_h {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.service-item_h {
+  background: #b8cbc4;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 100px rgba(14, 13, 13, 0.1);
+  text-align: center;
+  background: #cae2d2;
+}
+
+.service-item_h:hover {
+  background-color: #cce0d2;  
+  box-shadow: 0 2px 4px rgba(16, 15, 15, 0.2); 
+  transform: translateY(1px); 
+  transition: 200ms;
+}
+
+
+.service-icon_h {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 10px;
+}
+
+.service-title_h {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.service-description_h {
+  font-size: 16px;
+  color: #666;
+}
+
+
+/* Info Section */
+.info_h {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* text-align: center; */
+  padding: 50px 10px;
+  background: #b8cbc4;
+}
+
+.info-text_h {
+  width: 80%;
+  max-width: 500px;
+  line-height: 1.5;
+}
+
+.info-image_h {
+  width: 100%;
+  max-width: 400px;
+  margin-top: 20px;
+}
+
+.learn-more_h {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.learn-more_h:hover {
+  background-color: #218838;
+}
