@@ -6,43 +6,24 @@ body, html {
   background-color: #ebf7ee;
 }
 
-.error {
-  color: red;
-  font-size: 18px;
+/* Loading & Error */
+.loading, .error {
   text-align: center;
   min-height: 80vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.error-image {
+.loading-image, .error-image {
   max-width: 300px;
-  margin-bottom: 20px;
-}
-
-.loading-image{
-  max-width: 300px;
-  margin-bottom: 20px;
-}
-
-/* Loading message */
-.loading {
-  font-size: 20px;
-  text-align: center;
-  min-height: 80vh;
-  background-color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 /* Product Grid */
 .product-page {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
   padding: 20px;
 }
 
@@ -50,6 +31,7 @@ body, html {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
+  flex-grow: 1;
 }
 
 .product-card {
@@ -57,7 +39,6 @@ body, html {
   border-radius: 10px;
   padding: 15px;
   text-align: center;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   transition: 0.3s;
 }
 
@@ -72,21 +53,6 @@ body, html {
   border-radius: 10px;
 }
 
-.product-details {
-  margin-top: 10px;
-}
-
-.product-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.price {
-  font-size: 18px;
-  font-weight: bold;
-}
-
 .add-to-cart {
   background-color: #28a745;
   color: white;
@@ -96,21 +62,11 @@ body, html {
   border-radius: 5px;
 }
 
-.add-to-cart:hover {
-  background-color: #218838;
-}
-
 /* Cart Sidebar */
 .cart-sidebar {
-  position: fixed;
-  right: 0;
-  top: 0;
   width: 300px;
-  height: 100vh;
   background: white;
-  box-shadow: -5px 0 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  overflow-y: auto;
 }
 
 .cart-item {
@@ -122,25 +78,37 @@ body, html {
 .cart-item img {
   width: 50px;
   height: 50px;
-  border-radius: 5px;
   margin-right: 10px;
 }
 
-.cart-summary {
-  margin-top: 20px;
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
   text-align: center;
 }
 
-.checkout-btn {
-  background-color: #007bff;
+.confirm-btn {
+  background-color: #28a745;
   color: white;
   padding: 10px;
-  border: none;
-  border-radius: 5px;
-  width: 100%;
-  cursor: pointer;
 }
 
-.checkout-btn:hover {
-  background-color: #0056b3;
+.cancel-btn {
+  background-color: red;
+  color: white;
+  padding: 10px;
 }
