@@ -26,13 +26,13 @@ const LoginFourm = () => {
 
             if (response.status === 200) {
                 setError("");
-                alert("Login Successful! Redirecting to Dashboard...");
+                // alert("Login Successful! Redirecting to Dashboard...");
 
                 // Store token in local storage
                 localStorage.setItem("token", response.data.token);
 
                 // Redirect to dashboard
-                navigate("/dashboard");
+                navigate("/");
             }
         } catch (err) {
             setError(err.response?.data?.error || "Login failed. Please check your credentials.");
