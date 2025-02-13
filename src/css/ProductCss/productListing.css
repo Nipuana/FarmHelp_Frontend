@@ -4,6 +4,7 @@ body, html {
   padding: 0;
   font-family: Arial, sans-serif;
   background-color: #ebf7ee;
+  
 }
 
 /* Loading & Error */
@@ -19,12 +20,17 @@ body, html {
   max-width: 300px;
 }
 
+.product-main{
+  min-height: 80vh;
+}
+
 /* Product Grid */
 .product-page {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 20px;
+
 }
 
 .product-grid {

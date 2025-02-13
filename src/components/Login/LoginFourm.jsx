@@ -26,13 +26,18 @@ const LoginFourm = () => {
 
             if (response.status === 200) {
                 setError("");
-                // alert("Login Successful! Redirecting to Dashboard...");
 
-                // Store token in local storage
+                // Store user data in localStorage
                 localStorage.setItem("token", response.data.token);
+                localStorage.setItem("username", response.data.username);
+                localStorage.setItem("isAdmin", response.data.isAdmin); // ✅ Store isAdmin status
 
-                // Redirect to dashboard
-                navigate("/");
+                // Redirect based on admin privileges
+                if (response.data.isAdmin) {
+                    navigate("/admin-dashboard"); // ✅ Admin goes to admin panel
+                } else {
+                    navigate("/"); // ✅ Regular user goes to homepage
+                }
             }
         } catch (err) {
             setError(err.response?.data?.error || "Login failed. Please check your credentials.");

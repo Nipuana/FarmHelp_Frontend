@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import API from "../../api/api"; // Import API file
+import API from "../../API/api"; // Import API file
 import "../../css/ProductCss/productListing.css";
 import err_img from "../../images/failed_product.png";
 import load_gif from "../../images/Loading.gif";
@@ -82,6 +82,7 @@ const ProductListing = () => {
   );
 
   return (
+    <div classname="product-main">
     <div className="product-page">
       {/* Product Grid */}
       <div className="product-grid">
@@ -143,6 +144,7 @@ const ProductListing = () => {
           </div>
         </div>
       )}
+    </div>
     </div>
   );
 };

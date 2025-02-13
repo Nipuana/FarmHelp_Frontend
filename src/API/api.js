@@ -8,7 +8,7 @@ const getAuthHeaders = () => {
     return token ? { Authorization: `Bearer ${token}` } : {};
 };
 
-// ====== AUTHENTICATION API ======
+//   AUTHENTICATION API  
 export const registerUser = async (userData) => {
     try {
         console.log("Sending Registration Request:", userData);
@@ -45,7 +45,7 @@ export const deleteUser = async (id) => {
     return axios.delete(`${API_URL}/users/delete_users/${id}`, { headers: getAuthHeaders() });
 };
 
-// ====== PRODUCTS API ======
+//   PRODUCTS API  
 export const createProduct = async (productData) => {
     return axios.post(`${API_URL}/products/create_products`, productData, { headers: getAuthHeaders() });
 };
@@ -66,7 +66,7 @@ export const deleteProduct = async (id) => {
     return axios.delete(`${API_URL}/products/delete_products/${id}`, { headers: getAuthHeaders() });
 };
 
-// ====== ORDERS API ======
+//   ORDERS API  
 export const createOrder = async (orderData) => {
     return axios.post(`${API_URL}/orders/create_orders`, orderData, { headers: getAuthHeaders() });
 };
@@ -83,7 +83,7 @@ export const deleteOrder = async (id) => {
     return axios.delete(`${API_URL}/orders/delete_orders/${id}`, { headers: getAuthHeaders() });
 };
 
-// ====== REVIEWS API ======
+//   REVIEWS API  
 export const createReview = async (reviewData) => {
     return axios.post(`${API_URL}/reviews/create_review`, reviewData, { headers: getAuthHeaders() });
 };
@@ -100,7 +100,7 @@ export const deleteReview = async (id) => {
     return axios.delete(`${API_URL}/reviews/delete_review/${id}`, { headers: getAuthHeaders() });
 };
 
-// ====== CATEGORIES API ======
+//   CATEGORIES API  
 export const createCategory = async (categoryData) => {
     return axios.post(`${API_URL}/categories/create_category`, categoryData, { headers: getAuthHeaders() });
 };
