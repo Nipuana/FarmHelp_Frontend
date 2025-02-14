@@ -15,7 +15,7 @@ const AdminLogin = () => {
         // Validate username and password
         if (username === "@dmin" && password === "@dmin123") {
             setError(""); // Clear any previous error
-            navigate("/Admin_Dashboard"); // Redirect to /Admin_Dashboard
+            navigate("/ad_dash"); // Redirect to /Admin_Dashboard
         } else {
             setError("Invalid username or password"); // Set error message
         }

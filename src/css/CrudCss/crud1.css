@@ -1,0 +1,135 @@
+.user-container_user {
+  width: 85%;
+  margin: auto;
+  text-align: center;
+}
+
+.header-section_user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* Add New User Button */
+.add-user-btn_user {
+  background: #4caf50;
+  color: white;
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.add-user-btn_user:hover {
+  background: #388e3c;
+}
+
+/* Search Bar */
+.search-bar_user {
+  display: flex;
+  align-items: center;
+  background: #f1f1f1;
+  border-radius: 20px;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+}
+
+.search-bar_user input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 16px;
+  padding: 5px;
+}
+
+.search-icon_user {
+  font-size: 18px;
+  color: gray;
+  margin-left: 5px;
+}
+
+/* Table */
+.user-table_user {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-table_user table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.user-table_user th, .user-table_user td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+}
+
+.user-table_user th {
+  background: #f5f5f5;
+  font-weight: bold;
+}
+
+/* Buttons */
+.edit-btn_user,
+.delete-btn_user,
+.save-btn_user {
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin: 0 5px;
+}
+
+.edit-btn_user {
+  background-color: #007bff;
+  color: white;
+}
+
+.edit-btn_user:hover {
+  background-color: #0056b3;
+}
+
+.save-btn_user {
+  background-color: #4caf50;
+  color: white;
+}
+
+.save-btn_user:hover {
+  background-color: #388e3c;
+}
+
+.delete-btn_user {
+  background-color: red;
+  color: white;
+}
+
+.delete-btn_user:hover {
+  background-color: darkred;
+}
+
+/* Pagination */
+.pagination_user {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.pagination_user button {
+  padding: 8px 12px;
+  margin: 5px;
+  border-radius: 5px;
+  background-color: #ddd;
+}
+
+.pagination_user .active_user {
+  background-color: green;
+  color: white;
+}

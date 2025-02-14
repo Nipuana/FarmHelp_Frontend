@@ -7,7 +7,7 @@ import { FaUserCircle } from "react-icons/fa"; // User icon
 const Header = () => {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [username, setUsername] = useState(localStorage.getItem("username"));
-  const [isAdmin, setIsAdmin] = useState(localStorage.getItem("isAdmin") === "true"); // Fix retrieval issue
+  const [isAdmin, setIsAdmin] = useState(localStorage.getItem("isAdmin") === "true"); 
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
@@ -15,16 +15,16 @@ const Header = () => {
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
     const storedUsername = localStorage.getItem("username");
-    const storedIsAdmin = localStorage.getItem("isAdmin") === "true"; // Ensure correct boolean value
+    const storedIsAdmin = localStorage.getItem("isAdmin") === "true"; 
 
     if (storedToken) {
       setToken(storedToken);
       setUsername(storedUsername);
-      setIsAdmin(storedIsAdmin); // Update state
+      setIsAdmin(storedIsAdmin); 
     }
   }, []);
 
-  // Handle click outside of dropdown to close it
+  
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -81,10 +81,10 @@ const Header = () => {
               <div className="user-dropdown">
                 <ul>  
                   {isAdmin && (
-                    <li><Link to="/AdminLogin101">Admin Panel</Link></li>
+                    <Link to="/ad_dash" className="aaa"><li>Admin Panel</li></Link>
                   )}
-                  <li><Link to="/change-password">Change Password</Link></li>
-                  <li onClick={handleLogout}>Logout</li>
+                  <Link to="/change-password" className="aaa"><li>Change Password</li></Link>
+                  <li className="aab" onClick={handleLogout} style={{color:"red"}}>Logout</li>
                 </ul>
               </div>
             )}

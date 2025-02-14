@@ -178,22 +178,14 @@
   padding-left: 15px;
 }
 
-.user-dropdown li:last-child {
-  color: red;
-  font-weight: bold;
-  /* margin-left: 15px; */
+
+.aaa{
+  text-decoration: none;
   
 }
 
-.user-dropdown ul li {
-  text-decoration: none;
-}
 
-/* Ensure dropdown links do not have underlines */
-.user-dropdown ul li a {
-  text-decoration: none; /* Remove underline */
 
-}
 
 
 

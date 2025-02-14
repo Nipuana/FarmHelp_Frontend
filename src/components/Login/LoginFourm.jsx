@@ -34,9 +34,9 @@ const LoginFourm = () => {
 
                 // Redirect based on admin privileges
                 if (response.data.isAdmin) {
-                    navigate("/admin-dashboard"); // ✅ Admin goes to admin panel
+                    navigate("/ad_dash"); 
                 } else {
-                    navigate("/"); // ✅ Regular user goes to homepage
+                    navigate("/"); 
                 }
             }
         } catch (err) {

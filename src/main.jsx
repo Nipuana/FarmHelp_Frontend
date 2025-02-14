@@ -6,7 +6,7 @@ import "./index.css";
 import Home from "./components/Home/homePage.jsx";
 import Landing from "./components/Landing/landingPage.jsx";
 import NotFound from "./components/NotFound/NotFound.jsx";
-import AdminLogin from "./components/Admin/adminLogin.jsx";
+import CRUD from "./components/CRUD/crudFinal.jsx";
 import AdminDash from './components/Admin/adminDashboard.jsx'
 import Register from "./components/Register/registerPage.jsx";
 import Product from "./components/Product/productDashboard.jsx";
@@ -35,11 +35,11 @@ const ProtectedRoute = ({ element }) => {
 createRoot(document.getElementById("root")).render(
     <StrictMode>
         <Router>
-            <HeaderWrapper /> {/* Ensures Header Reloads on Route Change */}
+            <HeaderWrapper /> 
             <Routes>
                 <Route path="/" element={<ProtectedRoute element={<Home />} />} />
                 <Route path="/Landing" element={<Landing />} />
-                <Route path="/AdminLogin101" element={<ProtectedRoute element={<AdminLogin />} />} />
+                <Route path="/crud1" element={<ProtectedRoute element={<CRUD />} />} />
                 <Route path="/ad_dash" element={<ProtectedRoute element={<AdminDash />} />} />
                 <Route path="*" element={<ProtectedRoute element={<NotFound />} />} />
                 <Route path="/Register" element={<Register />} />
@@ -51,4 +51,3 @@ createRoot(document.getElementById("root")).render(
         </Router>
     </StrictMode>
 );
-s

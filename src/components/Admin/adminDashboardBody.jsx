@@ -1,76 +1,85 @@
 import React from "react";
-import "../../css/AdminCss/adminDashboardBody.css";
-import { Users, Settings, BarChart2 } from "lucide-react";
+import { FaUsers, FaMoneyBillWave, FaHome, FaSignOutAlt } from "react-icons/fa";
+import "../../css/AdminCss/AdminDashboardBody.css"; // Import CSS file
 
-const AdminPanel = () => {
+const AdminDashboard = () => {
   return (
     <div className="admin-container">
-      {/* Sidebar */}
-      <div className="sidebar">
-        <div className="sidebar-header">
-          <h2>Admin Panel</h2>
-        </div>
-        <ul className="sidebar-menu">
-          <li className="menu-item">
-            <Users className="icon" /> Users
-          </li>
-          <li className="menu-item">
-            <BarChart2 className="icon" /> Analytics
-          </li>
-          <li className="menu-item">
-            <Settings className="icon" /> Settings
-          </li>
-        </ul>
-      </div>
+  
 
-      {/* Main Content */}
-      <div className="main-content">
-        <h1 className="dashboard-title">Dashboard</h1>
+      {/* Main Dashboard Content */}
+      <div className="dashboard-content">
+        <h1 className="dashboard-title">Admin Panel</h1>
 
-        {/* Cards */}
-        <div className="card-container">
-          <div className="card">
-            <h3>Total Users</h3>
-            <p>1,245</p>
+        {/* Stats Section */}
+        <div className="stats-container">
+          <div className="stats-box">
+            <FaUsers className="stats-icon green-icon" />
+            <div>
+              <p>Total Users</p>
+              <h2>---</h2>
+            </div>
           </div>
-          <div className="card">
-            <h3>Active Sessions</h3>
-            <p>243</p>
-          </div>
-          <div className="card">
-            <h3>Revenue</h3>
-            <p>$12,540</p>
+          <div className="stats-box">
+            <FaMoneyBillWave className="stats-icon purple-icon" />
+            <div>
+              <p>Total Sales</p>
+              <h2>---</h2>
+            </div>
           </div>
         </div>
 
-        {/* User Table */}
-        <table className="user-table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Role</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>John Doe</td>
-              <td>johndoe@example.com</td>
-              <td>Admin</td>
-              <td>
-                <button className="btn btn-outline">Edit</button>
-                <button className="btn btn-danger">Delete</button>
-              </td>
-            </tr>
-            {/* More rows */}
-          </tbody>
-        </table>
+        {/* Pending Orders */}
+        <div className="orders-container">
+          <h2>Pending Orders</h2>
+          <p className="orders-subtitle">These are the orders that customers have placed and are processing</p>
+          <div className="warning-box">
+            ⚠️ These are the orders that are left to be processed
+          </div>
+
+          {/* Orders Table */}
+          <table className="orders-table">
+            <thead>
+              <tr>
+                <th>Order Id</th>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Delivery Location</th>
+                <th>Status</th>
+                <th>Update Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {Array.from({ length: 9 }).map((_, index) => (
+                <tr key={index}>
+                  <td>Order {index + 1}</td>
+                  <td>something</td>
+                  <td>{Math.floor(Math.random() * 100)}</td>
+                  <td>Some Location</td>
+                  <td>Pending</td>
+                  <td>
+                    <button className="btn in-process">📄 In Process</button>
+                    <button className="btn delivered">🚚 Delivered</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          {/* Pagination */}
+          <div className="pagination">
+            <button className="page-btn">&laquo;</button>
+            {[1, 2, 3, 4, 5].map((num) => (
+              <button key={num} className={`page-btn ${num === 2 ? "active" : ""}`}>
+                {num}
+              </button>
+            ))}
+            <button className="page-btn">&raquo;</button>
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 
-export default AdminPanel;
+export default AdminDashboard;
