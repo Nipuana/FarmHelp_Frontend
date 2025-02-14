@@ -7,7 +7,7 @@ import { FaUserCircle } from "react-icons/fa"; // User icon
 const Header = () => {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [username, setUsername] = useState(localStorage.getItem("username"));
-  const [isAdmin, setIsAdmin] = useState(localStorage.getItem("isAdmin") === "true"); // ✅ Fix retrieval issue
+  const [isAdmin, setIsAdmin] = useState(localStorage.getItem("isAdmin") === "true"); // Fix retrieval issue
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
@@ -15,12 +15,12 @@ const Header = () => {
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
     const storedUsername = localStorage.getItem("username");
-    const storedIsAdmin = localStorage.getItem("isAdmin") === "true"; // ✅ Ensure correct boolean value
+    const storedIsAdmin = localStorage.getItem("isAdmin") === "true"; // Ensure correct boolean value
 
     if (storedToken) {
       setToken(storedToken);
       setUsername(storedUsername);
-      setIsAdmin(storedIsAdmin); // ✅ Update state
+      setIsAdmin(storedIsAdmin); // Update state
     }
   }, []);
 
@@ -79,9 +79,9 @@ const Header = () => {
             {/* Dropdown Menu for User */}
             {showDropdown && (
               <div className="user-dropdown">
-                <ul>
+                <ul>  
                   {isAdmin && (
-                    <li><Link to="/admin-dashboard">Admin Panel</Link></li>
+                    <li><Link to="/AdminLogin101">Admin Panel</Link></li>
                   )}
                   <li><Link to="/change-password">Change Password</Link></li>
                   <li onClick={handleLogout}>Logout</li>
