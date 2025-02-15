@@ -6,8 +6,9 @@ import "./index.css";
 import Home from "./components/Home/homePage.jsx";
 import Landing from "./components/Landing/landingPage.jsx";
 import NotFound from "./components/NotFound/NotFound.jsx";
-import CRUD from "./components/CRUD-User/crudUserFinal.jsx";
-import AdminDash from './components/Admin/adminDashboard.jsx'
+import CRUD_User from "./components/CRUD-User/crudUserFinal.jsx";
+import CRUD_Category from "./components/CRUD-Category/crudCategoryFinal.jsx";
+import AdminDash from './components/Admin/adminDashboard.jsx';
 import Register from "./components/Register/registerPage.jsx";
 import Product from "./components/Product/productDashboard.jsx";
 import Login from "./components/Login/loginPage.jsx";
@@ -39,7 +40,8 @@ createRoot(document.getElementById("root")).render(
             <Routes>
                 <Route path="/" element={<ProtectedRoute element={<Home />} />} />
                 <Route path="/Landing" element={<Landing />} />
-                <Route path="/CRUD-User" element={<ProtectedRoute element={<CRUD />} />} />
+                <Route path="/CRUD1" element={<ProtectedRoute element={<CRUD_User />} />} />
+                <Route path="/CRUD2" element={<ProtectedRoute element={<CRUD_Category />} />} />
                 <Route path="/ad_dash" element={<ProtectedRoute element={<AdminDash />} />} />
                 <Route path="*" element={<ProtectedRoute element={<NotFound />} />} />
                 <Route path="/Register" element={<Register />} />

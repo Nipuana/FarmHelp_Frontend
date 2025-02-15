@@ -14,10 +14,10 @@ function Sidebar() {
               <nav className="nav-links">
                 <ul>
                   <li>Users CRUD</li>
-                  <li>Products CRUD</li>
-                  <li>Reviews CRUD</li>
-                  <li>Orders CRUD</li>
                   <li>Categories CRUD</li>
+                  <li>Products CRUD</li>
+                  <li>Orders CRUD</li>
+                  <li>Reviews CRUD</li>
                 </ul>
               </nav>
               <button className="logout-btn">

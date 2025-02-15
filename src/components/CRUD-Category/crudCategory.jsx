@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
 import API from "../../API/api"; // API file for backend calls
-import "../../css/CrudCss/crudCategory.css";
+import "../../css/CrudCategoryCss/crudCategory.css";
 import { FaEdit, FaTrash, FaSave, FaSearch, FaPlus } from "react-icons/fa";
 
 const CategoryTable = () => {
   const [categories, setCategories] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [editingCategoryId, setEditingCategoryId] = useState(null);
-  const [editData, setEditData] = useState({});
+  const [editData, setEditData] = useState({
+    categoryName: "",
+    categoryDescription: "",
+  });
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
   const [showAddCategory, setShowAddCategory] = useState(false);
@@ -47,7 +50,8 @@ const CategoryTable = () => {
       try {
         await API.updateCategory(editingCategoryId, editData);
         setEditingCategoryId(null);
-        fetchCategories();
+        setEditData({ categoryName: "", categoryDescription: "" }); // Reset editData
+        fetchCategories(); // Refresh the categories list
       } catch (err) {
         console.error("Error updating category", err);
       }

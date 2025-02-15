@@ -1,0 +1,153 @@
+.category-container {
+    width: 85%;
+    margin: auto;
+  }
+  
+  .category-title {
+    text-align: center;
+    margin: 10px;
+  }
+  
+  .header-section_category {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .save-btn_category{
+    width: fit-content;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #388e3c;
+    color: white;
+    border: none;
+  }
+  
+  /* Add New Category Button */
+  .add-category-btn {
+    background: #4caf50;
+    color: white;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  
+  .add-category-btn:hover {
+    background: #388e3c;
+  }
+  
+  .add-category-form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    width: 450px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+  }
+  /* Search Bar */
+.search-bar_category {
+  display: flex;
+  align-items: center;
+  background: #f1f1f1;
+  border-radius: 20px;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+}
+
+.search-bar_category input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 12px;
+  padding: 5px;
+  margin: 0;
+}
+
+.search-icon_category {
+  font-size: 12px;
+  color: gray;
+  margin-left: 5px; 
+}
+  
+  /* Table */
+  .category-table {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .category-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .category-table th, .category-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+  }
+
+  /* Buttons */
+.edit-btn_category,
+.delete-btn_category,
+.save-btn_category {
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin: 0 5px;
+}
+
+.edit-btn_category {
+  background-color: #007bff;
+  color: white;
+}
+
+.edit-btn_category:hover {
+  background-color: #0056b3;
+}
+
+.save-btn_category {
+  background-color: #4caf50;
+  color: white;
+}
+
+.save-btn_category:hover {
+  background-color: #388e3c;
+}
+
+.delete-btn_category {
+  background-color: red;
+  color: white;
+}
+
+.delete-btn_category:hover {
+  background-color: darkred;
+}
+  
+  .pagination_category {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+  }
+  
+  .pagination_category button {
+    padding: 8px 12px;
+    margin: 5px;
+    border-radius: 5px;
+    background-color: #ddd;
+  }
+  
+  .pagination_category .active_category {
+    background-color: green;
+    color: white;
+  }
+  
