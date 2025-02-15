@@ -136,7 +136,7 @@ const UserTable = () => {
               onChange={(e) => setNewUser({ ...newUser, password: e.target.value })}
             />
             <button type="button" className="toggle-password_user" onClick={() => setShowPassword(!showPassword)}>
-              {showPassword ? <FaEyeSlash /> : <FaEye />}
+              {showPassword ? <FaEye/> : <FaEyeSlash/>}
             </button>
           </div>
           <label>

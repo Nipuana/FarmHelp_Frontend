@@ -72,7 +72,7 @@ const LoginFourm = () => {
                             required
                         />
                         <button type="button" className="toggle-password" onClick={() => setShowPassword(!showPassword)}>
-                            {showPassword ? <FaEyeSlash /> : <FaEye />}
+                            {showPassword ? <FaEye/> : <FaEyeSlash/>}
                         </button>
                     </div>
                     <button type="submit" className="login-btn" disabled={loading}>
