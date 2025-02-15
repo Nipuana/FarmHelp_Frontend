@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import API from "../../API/api"; // API file for backend calls
-import "../../css/CrudCss/crud1.css";
+import "../../css/CrudUserCss/crudUser.css";
 import { FaEdit, FaTrash, FaSave, FaSearch, FaUserPlus, FaEye, FaEyeSlash } from "react-icons/fa";
 
 const UserTable = () => {

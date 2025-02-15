@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000"; //Backend connection
+const API_URL = "http://localhost:5000"; // Backend connection
 
 // Function to get authorization headers
 const getAuthHeaders = () => {
@@ -83,6 +83,19 @@ export const deleteOrder = async (id) => {
     return axios.delete(`${API_URL}/orders/delete_orders/${id}`, { headers: getAuthHeaders() });
 };
 
+//   ORDER-PRODUCT API 
+export const addProductToOrder = async (orderProductData) => {
+    return axios.post(`${API_URL}/order_products/add`, orderProductData, { headers: getAuthHeaders() });
+};
+
+export const getOrderProducts = async () => {
+    return axios.get(`${API_URL}/order_products/view`, { headers: getAuthHeaders() });
+};
+
+export const deleteOrderProduct = async (orderId, productId) => {
+    return axios.delete(`${API_URL}/order_products/delete/${orderId}/${productId}`, { headers: getAuthHeaders() });
+};
+
 //   REVIEWS API  
 export const createReview = async (reviewData) => {
     return axios.post(`${API_URL}/reviews/create_review`, reviewData, { headers: getAuthHeaders() });
@@ -133,6 +146,9 @@ export default {
     getAllOrders,
     updateOrder,
     deleteOrder,
+    addProductToOrder,
+    getOrderProducts,
+    deleteOrderProduct,
     createReview,
     getAllReviews,
     updateReview,

@@ -1,8 +1,8 @@
 import React from 'react';
-import Body from "./crud1";
+import Body from "./crudUser";
 import Sidebar from '../Common/adminbar';
 import { FaHome, FaSignOutAlt } from "react-icons/fa";
-import '../../css/CrudCss/crud1Final.css';
+import '../../css/CrudUserCss/crudUserFinal.css';
 
 function CRUD() {
   return (
