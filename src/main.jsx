@@ -15,7 +15,6 @@ import Login from "./components/Login/loginPage.jsx";
 import Abt_US from "./components/AboutUs/AboutUs.jsx";
 import FAQ from "./components/faq/faq.jsx";
 
-
 const HeaderWrapper = () => {
     const location = useLocation(); 
     const [key, setKey] = useState(0); 
@@ -24,13 +23,25 @@ const HeaderWrapper = () => {
         setKey((prevKey) => prevKey + 1); 
     }, [location]);
 
-    return <Header key={key} />; 
+    return <Header key={key} />;
 };
 
-// Protected Route Component
+// General Protected Route (for authenticated users)
 const ProtectedRoute = ({ element }) => {
     const token = localStorage.getItem("token");
     return token ? element : <Navigate to="/Landing" replace />;
+};
+
+// Admin Protected Route (Only for Admin Users)
+const AdminRoute = ({ element }) => {
+    const token = localStorage.getItem("token");
+    const isAdmin = localStorage.getItem("isAdmin") === "true"; // Ensure admin validation
+
+    if (!token) {
+        return <Navigate to="/Landing" replace />;
+    }
+    
+    return isAdmin ? element : <Navigate to="*" replace />;
 };
 
 createRoot(document.getElementById("root")).render(
@@ -38,17 +49,26 @@ createRoot(document.getElementById("root")).render(
         <Router>
             <HeaderWrapper /> 
             <Routes>
-                <Route path="/" element={<ProtectedRoute element={<Home />} />} />
+                
+                {/* General Routes */}
                 <Route path="/Landing" element={<Landing />} />
-                <Route path="/CRUD1" element={<ProtectedRoute element={<CRUD_User />} />} />
-                <Route path="/CRUD2" element={<ProtectedRoute element={<CRUD_Category />} />} />
-                <Route path="/ad_dash" element={<ProtectedRoute element={<AdminDash />} />} />
-                <Route path="*" element={<ProtectedRoute element={<NotFound />} />} />
-                <Route path="/Register" element={<Register />} />
-                <Route path="/product" element={<ProtectedRoute element={<Product />} />} />
                 <Route path="/Login" element={<Login />} />
+                <Route path="/Register" element={<Register />} />
+                
+
+                {/* Protected Routes */}
+                <Route path="*" element={<ProtectedRoute element={<NotFound />} />} />
+                <Route path="/" element={<ProtectedRoute element={<Home />} />} />
+                <Route path="/product" element={<ProtectedRoute element={<Product />} />} />
                 <Route path="/about-us" element={<ProtectedRoute element={<Abt_US />} />} />
-                <Route path="/faqs" element={<ProtectedRoute element={<FAQ />} />} />
+                <Route path="/faqs" element={<ProtectedRoute element={<FAQ />} />} />      
+
+                {/* Admin Protected Routes */}
+                <Route path="/CRUD1" element={<AdminRoute element={<CRUD_User />} />} />
+                <Route path="/CRUD2" element={<AdminRoute element={<CRUD_Category />} />} />
+                <Route path="/ad_dash" element={<AdminRoute element={<AdminDash />} />} />
+                
+
             </Routes>
         </Router>
     </StrictMode>

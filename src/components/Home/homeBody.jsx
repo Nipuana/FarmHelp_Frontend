@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../../css/HomeCss/homeBody.css";
 import farmingImage from "../../images/dash_tbg.png"; 
 import illst_1 from '../../images/product_img.png'
@@ -54,7 +55,7 @@ function App() {
             Farmers can get scammed or buy sub-standard products if they don't check authenticity. Our platform
             ensures reliability and cost efficiency.
           </p>
-          <button className="learn-more_h">Learn More</button>
+          <Link to="/about-us"><button className="learn-more_h">Learn More</button></Link>
         </div>
         <img src={illst_1} alt="Illustration" className="info-image_h" />
       </section>
