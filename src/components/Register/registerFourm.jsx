@@ -3,11 +3,13 @@ import { useNavigate } from "react-router-dom";
 import API from "../../API/api"; // Import API file
 import "../../css/RegisterCss/RegisterFourm.css";
 import img_r1 from "../../images/login_farmer.png";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const RegisterFourm = () => {
     const [username, setUsername] = useState("");
-    const [email, setEmail] = useState(""); // New email field
+    const [email, setEmail] = useState(""); 
     const [password, setPassword] = useState("");
+    const [showPassword, setShowPassword] = useState(false); // Password visibility toggle
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
@@ -27,12 +29,7 @@ const RegisterFourm = () => {
 
             if (response.status === 201) {
                 setError("");
-                // alert("Registration Successful! Redirecting to Dashboard...");
-
-                // Store token (if provided)
                 localStorage.setItem("token", response.data.token);
-
-                // Redirect to Dashboard
                 navigate("/");
             }
         } catch (err) {
@@ -68,13 +65,18 @@ const RegisterFourm = () => {
                         required
                     />
                     <label className="lbl">Password</label>
-                    <input
-                        type="password"
-                        placeholder="At least 8 characters"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
+                    <div className="password-input">
+                        <input
+                            type={showPassword ? "text" : "password"}
+                            placeholder="At least 8 characters"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+                        <button type="button" className="toggle-password" onClick={() => setShowPassword(!showPassword)}>
+                            {showPassword ? <FaEyeSlash /> : <FaEye />}
+                        </button>
+                    </div>
                     <button type="submit" className="register_frm-btn" disabled={loading}>
                         {loading ? "Registering..." : "Register"}
                     </button>

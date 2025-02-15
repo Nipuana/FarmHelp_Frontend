@@ -24,7 +24,6 @@ const Header = () => {
     }
   }, []);
 
-  
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -57,16 +56,18 @@ const Header = () => {
         </Link>
       </div>
 
-      {/* Middle Section: Navbar */}
-      <nav className="navbar">
-        <ul className="nav-links">
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/product">Products</Link></li>
-          <li><Link to="/reviews">Reviews</Link></li>
-          <li><Link to="/about-us">About Us</Link></li>
-          <li><Link to="/faqs">FAQs</Link></li>
-        </ul>
-      </nav>
+      {/* Middle Section: Navbar (Hidden for Admins) */}
+      {!isAdmin && (
+        <nav className="navbar">
+          <ul className="nav-links">
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/product">Products</Link></li>
+            <li><Link to="/reviews">Reviews</Link></li>
+            <li><Link to="/about-us">About Us</Link></li>
+            <li><Link to="/faqs">FAQs</Link></li>
+          </ul>
+        </nav>
+      )}
 
       {/* Right Section: Auth Buttons OR User Profile */}
       <div className="auth-section">

@@ -1,6 +1,7 @@
 import React from "react";
 import { FaUsers, FaMoneyBillWave, FaHome, FaSignOutAlt } from "react-icons/fa";
 import "../../css/AdminCss/AdminDashboardBody.css"; // Import CSS file
+import {Link} from "react-router-dom";
 
 const AdminDashboard = () => {
   return (
@@ -58,7 +59,7 @@ const AdminDashboard = () => {
                   <td>Some Location</td>
                   <td>Pending</td>
                   <td>
-                    <button className="btn in-process">📄 In Process</button>
+                    <button className="btn in-process">🚢 Shipped</button>
                     <button className="btn delivered">🚚 Delivered</button>
                   </td>
                 </tr>

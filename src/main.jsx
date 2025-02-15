@@ -6,7 +6,7 @@ import "./index.css";
 import Home from "./components/Home/homePage.jsx";
 import Landing from "./components/Landing/landingPage.jsx";
 import NotFound from "./components/NotFound/NotFound.jsx";
-import CRUD from "./components/CRUD/crudFinal.jsx";
+import CRUD from "./components/CRUD/crud1Final.jsx";
 import AdminDash from './components/Admin/adminDashboard.jsx'
 import Register from "./components/Register/registerPage.jsx";
 import Product from "./components/Product/productDashboard.jsx";

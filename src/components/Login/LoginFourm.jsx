@@ -3,12 +3,14 @@ import { useNavigate } from "react-router-dom";
 import API from "../../API/api"; // Import API file
 import "../../css/LoginCss/loginFourm.css";
 import img_i1 from "../../images/login_farmer.png"; 
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const LoginFourm = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
+    const [showPassword, setShowPassword] = useState(false); // Password visibility toggle
     const navigate = useNavigate();
 
     const handleLogin = async (e) => {
@@ -61,13 +63,18 @@ const LoginFourm = () => {
                         required
                     />
                     <label className="lbl">Password</label>
-                    <input
-                        type="password"
-                        placeholder="Enter your password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
+                    <div className="password-input">
+                        <input
+                            type={showPassword ? "text" : "password"}
+                            placeholder="Enter your password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+                        <button type="button" className="toggle-password" onClick={() => setShowPassword(!showPassword)}>
+                            {showPassword ? <FaEyeSlash /> : <FaEye />}
+                        </button>
+                    </div>
                     <button type="submit" className="login-btn" disabled={loading}>
                         {loading ? "Signing In..." : "Sign In"}
                     </button>

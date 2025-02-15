@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import API from "../../API/api"; // API file for backend calls
 import "../../css/CrudCss/crud1.css";
-import { FaEdit, FaTrash, FaSave, FaSearch, FaUserPlus } from "react-icons/fa";
+import { FaEdit, FaTrash, FaSave, FaSearch, FaUserPlus, FaEye, FaEyeSlash } from "react-icons/fa";
 
 const UserTable = () => {
   const [users, setUsers] = useState([]);
@@ -11,11 +11,12 @@ const UserTable = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
   const [showAddUser, setShowAddUser] = useState(false);
+  const [showPassword, setShowPassword] = useState(false); // State for password visibility toggle
   const [newUser, setNewUser] = useState({
     username: "",
     email: "",
     isAdmin: false,
-    password: ""
+    password: "",
   });
 
   useEffect(() => {
@@ -36,7 +37,7 @@ const UserTable = () => {
     setEditData({
       username: user.username,
       email: user.email,
-      isAdmin: user.isAdmin
+      isAdmin: user.isAdmin,
     }); // Only allow editing of username, email, and isAdmin, keeping the ID unchanged.
   };
 
@@ -77,7 +78,7 @@ const UserTable = () => {
           username: "",
           email: "",
           isAdmin: false,
-          password: ""
+          password: "",
         });
         fetchUsers();
       } catch (err) {
@@ -94,7 +95,7 @@ const UserTable = () => {
 
   return (
     <div className="user-container_user">
-      <h1>Users</h1>
+      <h1 className="us1">Users</h1>
 
       <div className="header-section_user">
         <button className="add-user-btn_user" onClick={() => setShowAddUser(!showAddUser)}>
@@ -127,12 +128,17 @@ const UserTable = () => {
             value={newUser.email}
             onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
           />
-          <input
-            type="password"
-            placeholder="Password"
-            value={newUser.password}
-            onChange={(e) => setNewUser({ ...newUser, password: e.target.value })}
-          />
+          <div className="password-input_user">
+            <input
+              type={showPassword ? "text" : "password"}
+              placeholder="Password"
+              value={newUser.password}
+              onChange={(e) => setNewUser({ ...newUser, password: e.target.value })}
+            />
+            <button type="button" className="toggle-password_user" onClick={() => setShowPassword(!showPassword)}>
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </button>
+          </div>
           <label>
             Admin:
             <input
