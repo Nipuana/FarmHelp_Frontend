@@ -5,13 +5,27 @@
   background-color: #f4f4f4;
 }
 
+/* Sidebar (Navbar) */
+.sidebar {
+  width: 250px; /* Fixed width */
+  background-color: #2c2c2c;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
 
-
-/* Dashboard Content */
+/* Dashboard Content - Fixing Overlap */
 .dashboard-content {
-  margin-left: 16%;
+  margin-left: 250px; /* Ensures it doesn't overlap the navbar */
   flex-grow: 1;
   padding: 30px;
+  min-width: calc(100% - 250px); /* Makes sure it fills the remaining space */
+  box-sizing: border-box;
 }
 
 .dashboard-title {
@@ -24,6 +38,7 @@
 .stats-container {
   display: flex;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .stats-box {
@@ -144,4 +159,33 @@
 
 .page-btn:hover {
   background-color: #ddd;
+}
+
+/* Responsive Fix */
+@media (max-width: 1024px) {
+  .dashboard-content {
+    margin-left: 220px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 200px; 
+  }
+
+  .dashboard-content {
+    margin-left: 200px;
+  }
+}
+
+@media (max-width: 600px) {
+  .sidebar {
+    width: 100%; 
+    position: relative;
+  }
+
+  .dashboard-content {
+    margin-left: 0;
+    padding: 20px;
+  }
 }
