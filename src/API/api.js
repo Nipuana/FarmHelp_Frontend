@@ -51,7 +51,7 @@ export const createProduct = async (productData) => {
 };
 
 export const getAllProducts = async () => {
-    return axios.get(`${API_URL}/products/view_products`);
+  return axios.get(`${API_URL}/products/view_products`);
 };
 
 export const getProductById = async (id) => {

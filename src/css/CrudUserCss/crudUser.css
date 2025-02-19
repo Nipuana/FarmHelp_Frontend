@@ -1,3 +1,4 @@
+/* Sidebar */
 .sidebar {
   width: 250px; 
   background-color: #2c2c2c;
@@ -11,8 +12,9 @@
   bottom: 0;
 }
 
+/* User Container */
 .user-container_user {
-  margin-left: 250px; /* Ensures it doesn't overlap the navbar */
+  margin-left: 250px; /* Ensures it doesn't overlap the sidebar */
   flex-grow: 1;
   padding: 30px;
   min-width: calc(100% - 250px); 
@@ -21,12 +23,12 @@
   box-sizing: border-box;
 }
 
-.us1{
+.us1 {
   text-align: center;
   margin: 10px;
-  
 }
 
+/* Header Section */
 .header-section_user {
   display: flex;
   justify-content: space-between;
@@ -44,44 +46,135 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: 0.3s ease;
+  transition: background 0.3s ease;
 }
 
 .add-user-btn_user:hover {
   background: #388e3c;
 }
 
-.add-user-form_user{
+/* Slide animation for Add User Form */
+@keyframes slideDown {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Add User Form with sliding effect */
+.add-user-form_user {
   display: flex;
   flex-direction: column;
   margin-bottom: 15px;
   width: 450px;
   background-color: white;
   padding: 20px;
-  border-radius: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  animation: slideDown 0.5s ease forwards;
+  transition: max-height 0.5s ease-in-out;
+  overflow: hidden;
 }
 
-.add-user-form_user label{
+/* Hidden state when form is closed */
+.add-user-form_user.hidden {
+  max-height: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Form Inputs */
+.add-user-form_user input,
+.add-user-form_user select {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+/* Improved Password Field with Show/Hide Icon */
+.password-container {
+  position: relative;
+  width: 100%;
+}
+
+.password-container input {
+  width: 100%;
+  padding-right: 40px; /* Space for the eye icon */
+}
+
+.password-toggle-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 16px;
+  color: #666;
+}
+
+.password-toggle-icon:hover {
+  color: #000;
+}
+
+/* Improved Dropdown Styling */
+.add-user-form_user select {
+  appearance: none;
+  background: #fff url("data:image/svg+xml;utf8,<svg fill='%23999' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>") no-repeat right 10px center;
+  background-size: 20px;
+  cursor: pointer;
+  padding-right: 30px;
+}
+
+/* Save and Cancel Buttons */
+.button-container {
   display: flex;
-  
-  
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 10px;
 }
 
-.add-user-form_user label input{
-  width: fit-content;
-  margin-top: 7px;
-  margin-left: 10px;
-  transform: scale(1.5);
-  
+.save-btn_user {
+  background-color: #4caf50;
+  color: white;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  flex: 1;
+  margin-right: 5px;
 }
 
-.save-btn_user{
-  width: fit-content;
-  
-  
+.save-btn_user:hover {
+  background-color: #388e3c;
 }
 
+.cancel-btn_user {
+  background-color: #f44336;
+  color: white;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  flex: 1;
+  margin-left: 5px;
+}
 
+.cancel-btn_user:hover {
+  background-color: #d32f2f;
+}
 
 /* Search Bar */
 .search-bar_user {
@@ -108,7 +201,7 @@
   margin-left: 5px; 
 }
 
-/* Table */
+/* User Table */
 .user-table_user {
   background: #fff;
   padding: 20px;
@@ -121,7 +214,8 @@
   border-collapse: collapse;
 }
 
-.user-table_user th, .user-table_user td {
+.user-table_user th,
+.user-table_user td {
   border: 1px solid #ddd;
   padding: 12px;
   text-align: center;
@@ -132,16 +226,14 @@
   font-weight: bold;
 }
 
-/* Buttons */
+/* Edit and Delete Buttons */
 .edit-btn_user,
-.delete-btn_user,
-.save-btn_user {
+.delete-btn_user {
   padding: 8px;
   border-radius: 5px;
   border: none;
   cursor: pointer;
-  transition: 0.3s ease;
-  margin: 0 5px;
+  transition: background 0.3s ease;
 }
 
 .edit-btn_user {
@@ -151,15 +243,6 @@
 
 .edit-btn_user:hover {
   background-color: #0056b3;
-}
-
-.save-btn_user {
-  background-color: #4caf50;
-  color: white;
-}
-
-.save-btn_user:hover {
-  background-color: #388e3c;
 }
 
 .delete-btn_user {
@@ -190,12 +273,24 @@
   color: white;
 }
 
+/* Mobile Responsiveness */
 @media screen and (max-width: 768px) {
-  .header-section_product {
+  .header-section_user {
     flex-direction: column;
     gap: 10px;
   }
-  .add-product-form {
+  
+  .add-user-form_user {
     width: 100%;
+  }
+
+  .button-container {
+    flex-direction: column;
+  }
+
+  .save-btn_user,
+  .cancel-btn_user {
+    width: 100%;
+    margin: 5px 0;
   }
 }

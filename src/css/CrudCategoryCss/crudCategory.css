@@ -1,3 +1,4 @@
+/* Sidebar */
 .sidebar {
   width: 250px; 
   background-color: #2c2c2c;
@@ -11,64 +12,146 @@
   bottom: 0;
 }
 
+/* Category Container */
 .category-container {
-  margin-left: 250px; /* Ensures it doesn't overlap the navbar */
+  margin-left: 250px; 
   flex-grow: 1;
   padding: 30px;
   min-width: calc(100% - 250px);
   height: calc(100vh - 80px);
   margin-top: 80px; 
   box-sizing: border-box;
-  }
+}
   
-  .category-title {
-    text-align: center;
-    margin: 10px;
-  }
-  
-  .header-section_category {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-  }
+.category-title {
+  text-align: center;
+  margin: 10px;
+}
 
-  .save-btn_category{
-    width: fit-content;
-    padding: 10px;
-    border-radius: 8px;
-    background-color: #388e3c;
-    color: white;
-    border: none;
+/* Header Section */
+.header-section_category {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* Add New Category Button */
+.add-category-btn {
+  background: #4caf50;
+  color: white;
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.add-category-btn:hover {
+  background: #388e3c;
+}
+
+/* Slide animation for Add Category Form */
+@keyframes slideDown {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
   }
-  
-  /* Add New Category Button */
-  .add-category-btn {
-    background: #4caf50;
-    color: white;
-    padding: 10px 15px;
-    font-size: 14px;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s ease;
+  100% {
+    transform: translateY(0);
+    opacity: 1;
   }
-  
-  .add-category-btn:hover {
-    background: #388e3c;
-  }
-  
-  .add-category-form {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 15px;
-    width: 450px;
-    background-color: white;
-    padding: 20px;
-    border-radius: 20px;
-  }
-  /* Search Bar */
+}
+
+/* Add Category Form with sliding effect */
+.add-category-form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  width: 450px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  animation: slideDown 0.5s ease forwards;
+  transition: max-height 0.5s ease-in-out;
+  overflow: hidden;
+}
+
+/* Hidden state when form is closed */
+.add-category-form.hidden {
+  max-height: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Form Inputs */
+.add-category-form input,
+.add-category-form select {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+/* Improved Dropdown Styling */
+.add-category-form select {
+  appearance: none;
+  background: #fff url("data:image/svg+xml;utf8,<svg fill='%23999' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>") no-repeat right 10px center;
+  background-size: 20px;
+  cursor: pointer;
+  padding-right: 30px;
+}
+
+/* Save and Cancel Buttons */
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.save-btn_category {
+  background-color: #4caf50;
+  color: white;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  flex: 1;
+  margin-right: 5px;
+}
+
+.save-btn_category:hover {
+  background-color: #388e3c;
+}
+
+.cancel-btn_category {
+  background-color: #f44336;
+  color: white;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  flex: 1;
+  margin-left: 5px;
+}
+
+.cancel-btn_category:hover {
+  background-color: #d32f2f;
+}
+
+/* Search Bar */
 .search-bar_category {
   display: flex;
   align-items: center;
@@ -92,36 +175,40 @@
   color: gray;
   margin-left: 5px; 
 }
-  
-  /* Table */
-  .category-table {
-    background: #fff;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .category-table table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .category-table th, .category-table td {
-    border: 1px solid #ddd;
-    padding: 12px;
-    text-align: center;
-  }
 
-  /* Buttons */
+/* Category Table */
+.category-table {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.category-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.category-table th,
+.category-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+}
+
+.category-table th {
+  background: #f5f5f5;
+  font-weight: bold;
+}
+
+/* Edit and Delete Buttons */
 .edit-btn_category,
-.delete-btn_category,
-.save-btn_category {
+.delete-btn_category {
   padding: 8px;
   border-radius: 5px;
   border: none;
   cursor: pointer;
-  transition: 0.3s ease;
-  margin: 0 5px;
+  transition: background 0.3s ease;
 }
 
 .edit-btn_category {
@@ -133,15 +220,6 @@
   background-color: #0056b3;
 }
 
-.save-btn_category {
-  background-color: #4caf50;
-  color: white;
-}
-
-.save-btn_category:hover {
-  background-color: #388e3c;
-}
-
 .delete-btn_category {
   background-color: red;
   color: white;
@@ -150,22 +228,39 @@
 .delete-btn_category:hover {
   background-color: darkred;
 }
-  
-  .pagination_category {
-    display: flex;
-    justify-content: center;
-    margin-top: 15px;
+
+/* Pagination */
+.pagination_category {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.pagination_category button {
+  padding: 8px 12px;
+  margin: 5px;
+  border-radius: 5px;
+  background-color: #ddd;
+}
+
+.pagination_category .active_category {
+  background-color: green;
+  color: white;
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 600px) {
+  .add-category-form {
+    width: 90%;
   }
-  
-  .pagination_category button {
-    padding: 8px 12px;
-    margin: 5px;
-    border-radius: 5px;
-    background-color: #ddd;
+
+  .button-container {
+    flex-direction: column;
   }
-  
-  .pagination_category .active_category {
-    background-color: green;
-    color: white;
+
+  .save-btn_category,
+  .cancel-btn_category {
+    width: 100%;
+    margin: 5px 0;
   }
-  
+}
