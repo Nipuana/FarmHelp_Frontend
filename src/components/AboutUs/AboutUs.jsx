@@ -3,7 +3,7 @@ import Body from "./AboutUsBody";
 import Footer from '../Common/Footer';
 import '../../css/AboutUsCss/AboutUs.css';
 
-function Landing() {
+function Abt_us() {
   return (
     <div className="App">
       <p className='filler_AB' >a</p>
@@ -14,4 +14,4 @@ function Landing() {
   );
 }
 
-export default Landing;
+export default Abt_us;

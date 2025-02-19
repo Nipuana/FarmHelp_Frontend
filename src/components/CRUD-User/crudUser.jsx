@@ -165,58 +165,58 @@ const UserTable = () => {
             </tr>
           </thead>
           <tbody>
-            {getFilteredUsers().map((user) => (
-              <tr key={user.id}>
-                <td>{user.id}</td> {/* ID is now non-editable */}
-                <td>
-                  {editingUserId === user.id ? (
-                    <input
-                      type="text"
-                      value={editData.username}
-                      onChange={(e) => setEditData({ ...editData, username: e.target.value })}
-                    />
-                  ) : (
-                    user.username
-                  )}
-                </td>
-                <td>
-                  {editingUserId === user.id ? (
-                    <input
-                      type="email"
-                      value={editData.email}
-                      onChange={(e) => setEditData({ ...editData, email: e.target.value })}
-                    />
-                  ) : (
-                    user.email
-                  )}
-                </td>
-                <td>
-                  <input
-                    type="checkbox"
-                    checked={editingUserId === user.id ? editData.isAdmin : user.isAdmin}
-                    onChange={(e) => setEditData({ ...editData, isAdmin: e.target.checked })}
-                    disabled={editingUserId !== user.id}
-                  />
-                </td>
-                <td>
-                  {editingUserId === user.id ? (
-                    <button className="save-btn_user" onClick={handleUpdateUser}>
-                      <FaSave />
-                    </button>
-                  ) : (
-                    <>
-                      <button className="edit-btn_user" onClick={() => handleEdit(user)}>
-                        <FaEdit />
-                      </button>
-                      <button className="delete-btn_user" onClick={() => handleDeleteUser(user.id)}>
-                        <FaTrash />
-                      </button>
-                    </>
-                  )}
-                </td>
-              </tr>
-            ))}
-          </tbody>
+  {getFilteredUsers().map((user) => (
+    <tr key={user.id}>
+      <td>{user.id}</td>
+      <td>
+        {editingUserId === user.id ? (
+          <input
+            type="text"
+            value={editData.username}
+            onChange={(e) => setEditData({ ...editData, username: e.target.value })}
+          />
+        ) : (
+          user.username
+        )}
+      </td>
+      <td>
+        {editingUserId === user.id ? (
+          <input
+            type="email"
+            value={editData.email}
+            onChange={(e) => setEditData({ ...editData, email: e.target.value })}
+          />
+        ) : (
+          user.email
+        )}
+      </td>
+      <td>
+        <input
+          type="checkbox"
+          checked={editingUserId === user.id ? editData.isAdmin : user.isAdmin}
+          onChange={(e) => setEditData({ ...editData, isAdmin: e.target.checked })}
+          disabled={editingUserId !== user.id}
+        />
+      </td>
+      <td>
+        {editingUserId === user.id ? (
+          <button className="save-btn_user" onClick={handleUpdateUser}>
+            <FaSave />
+          </button>
+        ) : (
+          <>
+            <button className="edit-btn_user" onClick={() => handleEdit(user)}>
+              <FaEdit />
+            </button>
+            <button className="delete-btn_user" onClick={() => handleDeleteUser(user.id)}>
+              <FaTrash />
+            </button>
+          </>
+        )}
+      </td>
+    </tr>
+  ))}
+</tbody>
         </table>
       </div>
 

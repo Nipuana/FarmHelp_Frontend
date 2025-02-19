@@ -2,7 +2,7 @@ import React from 'react';
 import Body from "./crudCategory";
 import '../../css/CrudCategoryCss/crudCategoryFinal.css';
 
-function CRUD() {
+function CRUD2() {
   return (
     <div className="crd_1">
       <p className='filler_cr1'>a</p>
@@ -13,4 +13,4 @@ function CRUD() {
   );
 }
 
-export default CRUD;
+export default CRUD2;

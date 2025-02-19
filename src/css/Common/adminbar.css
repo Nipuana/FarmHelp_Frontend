@@ -1,3 +1,7 @@
+.rem_und{
+  text-decoration: none;
+}
+
 /* Sidebar */
 .sidebar {
   width: 250px;
@@ -25,6 +29,15 @@
   font-size: 16px;
   border-radius: 5px;
   font-weight: bold;
+  text-decoration: none; /* ✅ Remove underline */
+}
+
+.back-btn a {
+  text-decoration: none; /* ✅ Ensures text has no underline */
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .back-btn:hover,
@@ -79,7 +92,7 @@
 }
 
 .crud-menu li a {
-  text-decoration: none;
+  text-decoration: none; /* ✅ Ensures no underline */
   color: white;
   font-weight: bold;
   display: block;

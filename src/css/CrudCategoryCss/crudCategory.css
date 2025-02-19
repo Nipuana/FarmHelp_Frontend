@@ -1,6 +1,24 @@
+.sidebar {
+  width: 250px; 
+  background-color: #2c2c2c;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+
 .category-container {
-    width: 85%;
-    margin: auto;
+  margin-left: 250px; /* Ensures it doesn't overlap the navbar */
+  flex-grow: 1;
+  padding: 30px;
+  min-width: calc(100% - 250px);
+  height: calc(100vh - 80px);
+  margin-top: 80px; 
+  box-sizing: border-box;
   }
   
   .category-title {

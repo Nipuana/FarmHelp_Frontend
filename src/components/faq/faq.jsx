@@ -3,7 +3,7 @@ import Body from "./faqPage.jsx";
 import Footer from '../Common/Footer';
 import '../../css/faqCss/faq.css';
 
-function Landing() {
+function FAQ() {
   return (
     <div className="App">
       <p className='filler_faq' >a</p>
@@ -14,4 +14,4 @@ function Landing() {
   );
 }
 
-export default Landing;
+export default FAQ;

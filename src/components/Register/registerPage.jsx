@@ -3,7 +3,7 @@ import Fourm from "./registerFourm";
 import Footer from '../Common/Footer';
 import '../../css/Registercss/RegisterPage.css';
 
-function AdminLogin() {
+function Register() {
   return (
     <div className="AdminLogin">
       <p className='filler_Reg' >a</p>
@@ -14,4 +14,4 @@ function AdminLogin() {
   );
 }
 
-export default AdminLogin;
+export default Register;

@@ -19,7 +19,7 @@ function Sidebar() {
     <>
       {/* Sidebar */}
       <aside className="sidebar">
-        <Link to="/ad_dash">
+        <Link to="/ad_dash" className="rem_und">
           <button className="back-btn">
             <FaHome /> Back To Home
           </button>

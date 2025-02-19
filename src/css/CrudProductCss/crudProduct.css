@@ -11,8 +11,9 @@
   bottom: 0;
 }
 
-.user-container_user {
-  margin-left: 250px; /* Ensures it doesn't overlap the navbar */
+
+.product-container {
+  margin-left: 250px; 
   flex-grow: 1;
   padding: 30px;
   min-width: calc(100% - 250px); 
@@ -21,21 +22,23 @@
   box-sizing: border-box;
 }
 
-.us1{
+
+
+.product-title {
   text-align: center;
   margin: 10px;
-  
 }
 
-.header-section_user {
+
+.header-section_product {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
 }
 
-/* Add New User Button */
-.add-user-btn_user {
+
+.add-product-btn {
   background: #4caf50;
   color: white;
   padding: 10px 15px;
@@ -47,11 +50,12 @@
   transition: 0.3s ease;
 }
 
-.add-user-btn_user:hover {
+.add-product-btn:hover {
   background: #388e3c;
 }
 
-.add-user-form_user{
+
+.add-product-form {
   display: flex;
   flex-direction: column;
   margin-bottom: 15px;
@@ -59,32 +63,43 @@
   background-color: white;
   padding: 20px;
   border-radius: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.add-user-form_user label{
+
+.image-upload {
   display: flex;
-  
-  
+  flex-direction: column;
+  margin-top: 10px;
 }
 
-.add-user-form_user label input{
-  width: fit-content;
-  margin-top: 7px;
-  margin-left: 10px;
-  transform: scale(1.5);
-  
+.image-upload label {
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
-.save-btn_user{
-  width: fit-content;
-  
-  
+.image-upload input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 
+.image-preview {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
 
-/* Search Bar */
-.search-bar_user {
+.image-preview img {
+  max-width: 100px;
+  height: auto;
+  border-radius: 8px;
+  border: 2px solid #ddd;
+}
+
+
+.search-bar_product {
   display: flex;
   align-items: center;
   background: #f1f1f1;
@@ -93,7 +108,7 @@
   border: 1px solid #ccc;
 }
 
-.search-bar_user input {
+.search-bar_product input {
   border: none;
   background: transparent;
   outline: none;
@@ -102,40 +117,40 @@
   margin: 0;
 }
 
-.search-icon_user {
+.search-icon_product {
   font-size: 12px;
   color: gray;
-  margin-left: 5px; 
+  margin-left: 5px;
 }
 
-/* Table */
-.user-table_user {
+
+.product-table {
   background: #fff;
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.user-table_user table {
+.product-table table {
   width: 100%;
   border-collapse: collapse;
 }
 
-.user-table_user th, .user-table_user td {
+.product-table th, .product-table td {
   border: 1px solid #ddd;
   padding: 12px;
   text-align: center;
 }
 
-.user-table_user th {
+.product-table th {
   background: #f5f5f5;
   font-weight: bold;
 }
 
-/* Buttons */
-.edit-btn_user,
-.delete-btn_user,
-.save-btn_user {
+
+.edit-btn_product,
+.delete-btn_product,
+.save-btn_product {
   padding: 8px;
   border-radius: 5px;
   border: none;
@@ -144,51 +159,66 @@
   margin: 0 5px;
 }
 
-.edit-btn_user {
+.edit-btn_product {
   background-color: #007bff;
   color: white;
 }
 
-.edit-btn_user:hover {
+.edit-btn_product:hover {
   background-color: #0056b3;
 }
 
-.save-btn_user {
+.save-btn_product {
   background-color: #4caf50;
   color: white;
 }
 
-.save-btn_user:hover {
+.save-btn_product:hover {
   background-color: #388e3c;
 }
 
-.delete-btn_user {
+.delete-btn_product {
   background-color: red;
   color: white;
 }
 
-.delete-btn_user:hover {
+.delete-btn_product:hover {
   background-color: darkred;
 }
 
-/* Pagination */
-.pagination_user {
+
+.add-product-form input,
+.add-product-form select {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.add-product-form select {
+  cursor: pointer;
+}
+
+
+.pagination_product {
   display: flex;
   justify-content: center;
   margin-top: 15px;
 }
 
-.pagination_user button {
+.pagination_product button {
   padding: 8px 12px;
   margin: 5px;
   border-radius: 5px;
   background-color: #ddd;
 }
 
-.pagination_user .active_user {
+.pagination_product .active_product {
   background-color: green;
   color: white;
 }
+
 
 @media screen and (max-width: 768px) {
   .header-section_product {

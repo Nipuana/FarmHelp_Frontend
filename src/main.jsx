@@ -4,11 +4,13 @@ import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "r
 import Header from "./components/Landing/Header.jsx";
 import Sidebar from "./components/Common/adminbar.jsx";
 import "./index.css";
+
 import Home from "./components/Home/homePage.jsx";
 import Landing from "./components/Landing/landingPage.jsx";
 import NotFound from "./components/NotFound/NotFound.jsx";
 import CRUD_User from "./components/CRUD-User/crudUserFinal.jsx";
 import CRUD_Category from "./components/CRUD-Category/crudCategoryFinal.jsx";
+import CRUD_Product from "./components/CRUD-Product/crudProductFinal.jsx";
 import AdminDash from './components/Admin/adminDashboard.jsx';
 import Register from "./components/Register/registerPage.jsx";
 import Product from "./components/Product/productDashboard.jsx";
@@ -29,7 +31,7 @@ const HeaderWrapper = () => {
 
 const Layout = ({ children }) => {
     const location = useLocation();
-    const adminRoutes = ["/ad_dash", "/CRUD1", "/CRUD2"];
+    const adminRoutes = ["/ad_dash", "/CRUD1", "/CRUD2","/CRUD3"];
     const isAdminPage = adminRoutes.includes(location.pathname);
 
     return (
@@ -79,6 +81,7 @@ createRoot(document.getElementById("root")).render(
                     {/* Admin Protected Routes */}
                     <Route path="/CRUD1" element={<AdminRoute element={<CRUD_User />} />} />
                     <Route path="/CRUD2" element={<AdminRoute element={<CRUD_Category />} />} />
+                    <Route path="/CRUD3" element={<AdminRoute element={<CRUD_Product />} />} />
                     <Route path="/ad_dash" element={<AdminRoute element={<AdminDash />} />} />
                 </Routes>
             </Layout>
