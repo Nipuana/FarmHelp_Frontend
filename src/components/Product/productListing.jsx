@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { FiShoppingCart } from "react-icons/fi"; // Import cart icon
+import { FiShoppingCart, FiX } from "react-icons/fi";
+import { FaStar } from "react-icons/fa";
 import API from "../../API/api";
 import "../../css/ProductCss/productListing.css";
 import err_img from "../../images/failed_product.png";
@@ -11,6 +12,7 @@ const ProductListing = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showCart, setShowCart] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -28,6 +30,17 @@ const ProductListing = () => {
     fetchProducts();
   }, []);
 
+  const handleProductClick = (product) => {
+    setSelectedProduct(product);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeProductDetails = () => {
+    setSelectedProduct(null);
+    document.body.style.overflow = 'auto';
+  };
+
+  // Cart functions remain the same
   const addToCart = (product) => {
     const existingItem = cart.find((item) => item.id === product.id);
     if (existingItem) {
@@ -64,14 +77,25 @@ const ProductListing = () => {
     </div>
   );
 
+  // Mock reviews data (you can replace this with actual reviews from your API)
+  const mockReviews = [
+    { id: 1, rating: 5, comment: "Great product!", user: "John D." },
+    { id: 2, rating: 4, comment: "Good quality but a bit pricey", user: "Sarah M." },
+    { id: 3, rating: 5, comment: "Exactly what I was looking for!", user: "Mike R." },
+  ];
+
   return (
-    <div className="product-main">
-      <div className="product-page">
-        {/* Product Grid */}
+    <div className={`product-main ${selectedProduct ? 'with-details' : ''}`}>
+      <div className={`product-page ${selectedProduct ? 'shifted' : ''}`}>
         <div className="product-grid">
           {products.map((product) => (
-            <div key={product.id} className="product-card">
-              <img className="product-image1"
+            <div 
+              key={product.id} 
+              className="product-card"
+              onClick={() => handleProductClick(product)}
+            >
+              <img 
+                className="product-image1"
                 src={product.productImage ? `http://localhost:5000/uploads/${product.productImage}` : "/default-image.png"}
                 alt={product.productname}
               />
@@ -80,7 +104,15 @@ const ProductListing = () => {
                 <p className="description">{product.description}</p>
                 <div className="product-footer">
                   <span className="product_price">${product.price}</span>
-                  <button onClick={() => addToCart(product)} className="add-to-cart">Add to Cart</button>
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      addToCart(product);
+                    }} 
+                    className="add-to-cart"
+                  >
+                    Add to Cart
+                  </button>
                 </div>
               </div>
             </div>
@@ -88,13 +120,59 @@ const ProductListing = () => {
         </div>
       </div>
 
-      {/* Floating Cart Icon */}
+      {/* Product Details Panel */}
+      {selectedProduct && (
+        <div className="product-details-panel">
+          <button className="close-details" onClick={closeProductDetails}>
+            <FiX size={24} />
+          </button>
+          <div className="details-content">
+            <img 
+              src={selectedProduct.productImage ? `http://localhost:5000/uploads/${selectedProduct.productImage}` : "/default-image.png"}
+              alt={selectedProduct.productname}
+              className="details-image"
+            />
+            <h1>{selectedProduct.productname}</h1>
+            <p className="details-description">{selectedProduct.description}</p>
+            <div className="details-price-section">
+              <span className="details-price">${selectedProduct.price}</span>
+              <button 
+                onClick={() => addToCart(selectedProduct)}
+                className="add-to-cart"
+              >
+                Add to Cart
+              </button>
+            </div>
+            
+            {/* Reviews Section */}
+            <div className="reviews-section">
+              <h2>Customer Reviews</h2>
+              <div className="reviews-list">
+                {mockReviews.map(review => (
+                  <div key={review.id} className="review-item">
+                    <div className="review-header">
+                      <div className="stars">
+                        {[...Array(review.rating)].map((_, i) => (
+                          <FaStar key={i} className="star-icon" />
+                        ))}
+                      </div>
+                      <span className="review-user">{review.user}</span>
+                    </div>
+                    <p className="review-comment">{review.comment}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Cart Icon and Popup remain the same */}
       <div className="cart-icon" onClick={() => setShowCart(!showCart)}>
         <FiShoppingCart size={30} />
         {cart.length > 0 && <span className="cart-badge">{cart.length}</span>}
       </div>
 
-      {/* Cart Pop-up */}
       {showCart && (
         <div className="cart-popup">
           <h2>Shopping Cart</h2>

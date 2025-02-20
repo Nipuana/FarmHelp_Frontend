@@ -152,7 +152,7 @@
   border-radius: 8px;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
   width: 200px;
-  z-index: 1050; /* Ensures it stays above everything */
+  z-index: 99999; /* Ensures it stays above everything */
   opacity: 0;
   visibility: hidden;
   transform: translateY(-10px);

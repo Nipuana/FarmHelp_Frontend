@@ -1,0 +1,137 @@
+/* crudReview.css */
+
+.review-container {
+    margin-left: 250px; /* Ensures it doesn't overlap the sidebar */
+  flex-grow: 1;
+  padding: 30px;
+  min-width: calc(100% - 250px); 
+  height: calc(100vh - 80px);
+  margin-top: 80px; 
+  box-sizing: border-box;
+  }
+  
+  .review-title {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .header-section_review {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .add-review-btn {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-review-btn:hover {
+    background-color: #218838;
+  }
+  
+  .search-bar_review {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-bar_review input {
+    padding: 8px 10px;
+    padding-right: 35px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .search-icon_review {
+    position: absolute;
+    right: 10px;
+    color: #666;
+    pointer-events: none;
+  }
+  
+  .add-review-form {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+  }
+  
+  .add-review-form input,
+  .add-review-form textarea {
+    width: 100%;
+    padding: 8px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .add-review-form textarea {
+    resize: vertical;
+    height: 100px;
+  }
+  
+  .save-btn_review {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .save-btn_review:hover {
+    background-color: #0069d9;
+  }
+  
+  .review-table {
+    overflow-x: auto;
+  }
+  
+  .review-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .review-table th,
+  .review-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .review-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .review-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .review-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  

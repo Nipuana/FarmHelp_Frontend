@@ -29,10 +29,11 @@ const LoginFourm = () => {
             if (response.status === 200) {
                 setError("");
 
-                // Store user data in localStorage
+                // ✅ Store user data in localStorage, including userId
                 localStorage.setItem("token", response.data.token);
+                localStorage.setItem("userId", response.data.userId);
                 localStorage.setItem("username", response.data.username);
-                localStorage.setItem("isAdmin", response.data.isAdmin); // ✅ Store isAdmin status
+                localStorage.setItem("isAdmin", response.data.isAdmin);
 
                 // Redirect based on admin privileges
                 if (response.data.isAdmin) {

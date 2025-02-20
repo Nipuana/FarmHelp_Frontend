@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import API from "../../API/api"; // API file for backend calls
 import "../../css/CrudOrderCss/crudOrder.css";
-import { FaEdit, FaTrash, FaSave, FaSearch, FaPlus, FaTimes } from "react-icons/fa";
+import { FaEdit, FaTrash, FaSave, FaSearch, FaTimes } from "react-icons/fa";
 
 const OrderTable = () => {
   const [orders, setOrders] = useState([]);
@@ -9,7 +9,7 @@ const OrderTable = () => {
   const [statusFilter, setStatusFilter] = useState(""); // Status filter
   const [editingOrderId, setEditingOrderId] = useState(null);
   const [editData, setEditData] = useState({});
-  
+
   useEffect(() => {
     fetchOrders();
   }, []);
@@ -26,6 +26,8 @@ const OrderTable = () => {
   const handleEditOrder = (order) => {
     setEditingOrderId(order.id);
     setEditData({
+      userId: order.userId, // Foreign Key
+      productId: order.productId, // Foreign Key
       orderQuantity: order.orderQuantity,
       price: order.price,
       address: order.address,
@@ -98,6 +100,8 @@ const OrderTable = () => {
           <thead>
             <tr>
               <th>Id</th>
+              <th>User ID</th>
+              <th>Product ID</th>
               <th>Quantity</th>
               <th>Price</th>
               <th>Address</th>
@@ -109,6 +113,8 @@ const OrderTable = () => {
             {getFilteredOrders().map((order) => (
               <tr key={order.id}>
                 <td>{order.id}</td>
+                <td>{order.userId}</td> {/* Foreign Key */}
+                <td>{order.productId}</td> {/* Foreign Key */}
 
                 {editingOrderId === order.id ? (
                   <>
