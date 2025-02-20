@@ -18,7 +18,7 @@ const ProductTable = () => {
     productImage: null,
   });
   const [editData, setEditData] = useState({});
-  const [editImage, setEditImage] = useState(null); // For editing product image
+  const [editImage, setEditImage] = useState(null);
 
   useEffect(() => {
     fetchProducts();
@@ -150,57 +150,6 @@ const ProductTable = () => {
         </div>
       </div>
 
-      {/* Add Product Form */}
-      {showAddProduct && (
-        <div className="add-product-form">
-          <input
-            type="text"
-            placeholder="Product Name"
-            value={newProduct.productname}
-            onChange={(e) => setNewProduct({ ...newProduct, productname: e.target.value })}
-          />
-          <input
-            type="text"
-            placeholder="Description"
-            value={newProduct.description}
-            onChange={(e) => setNewProduct({ ...newProduct, description: e.target.value })}
-          />
-          <input
-            type="number"
-            placeholder="Price"
-            value={newProduct.price}
-            onChange={(e) => setNewProduct({ ...newProduct, price: e.target.value })}
-          />
-          <input
-            type="number"
-            placeholder="Quantity"
-            value={newProduct.quantity}
-            onChange={(e) => setNewProduct({ ...newProduct, quantity: e.target.value })}
-          />
-
-          <select
-            value={newProduct.categoryId}
-            onChange={(e) => setNewProduct({ ...newProduct, categoryId: e.target.value })}
-          >
-            <option value="">Select Category</option>
-            {categories.map((category) => (
-              <option key={category.id} value={category.id}>
-                {category.categoryName}
-              </option>
-            ))}
-          </select>
-
-          <div className="image-upload">
-            <label>Upload Product Image</label>
-            <input type="file" accept="image/*" onChange={(e) => setNewProduct({ ...newProduct, productImage: e.target.files[0] })} />
-          </div>
-
-          <button className="save-btn_product" onClick={handleAddProduct}>
-            <FaSave /> Save
-          </button>
-        </div>
-      )}
-
       {/* Product Table */}
       <div className="product-table">
         <table>
@@ -220,24 +169,84 @@ const ProductTable = () => {
             {getFilteredProducts().map((product) => (
               <tr key={product.id}>
                 <td>{product.id}</td>
-                <td>{product.productName}</td>
-                <td>{product.description}</td>
-                <td>${product.price}</td>
-                <td>{product.quantity}</td>
-                <td>{product.categoryId}</td>
-                <td>
-                  {product.productImage && (
-                    <img src={`http://localhost:5000/uploads/${product.productImage}`} alt="Product" className="product-table-image" />
-                  )}
-                </td>
-                <td>
-                  <button className="edit-btn_product" onClick={() => handleEditProduct(product)}>
-                    <FaEdit />
-                  </button>
-                  <button className="delete-btn_product" onClick={() => handleDeleteProduct(product.id)}>
-                    <FaTrash />
-                  </button>
-                </td>
+
+                {editingProductId === product.id ? (
+                  <>
+                    <td>
+                      <input
+                        type="text"
+                        value={editData.productname}
+                        onChange={(e) => setEditData({ ...editData, productname: e.target.value })}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        value={editData.description}
+                        onChange={(e) => setEditData({ ...editData, description: e.target.value })}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="number"
+                        value={editData.price}
+                        onChange={(e) => setEditData({ ...editData, price: e.target.value })}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="number"
+                        value={editData.quantity}
+                        onChange={(e) => setEditData({ ...editData, quantity: e.target.value })}
+                      />
+                    </td>
+                    <td>
+                      <select
+                        value={editData.categoryId}
+                        onChange={(e) => setEditData({ ...editData, categoryId: e.target.value })}
+                      >
+                        <option value="">Select Category</option>
+                        {categories.map((category) => (
+                          <option key={category.id} value={category.id}>
+                            {category.categoryName}
+                          </option>
+                        ))}
+                      </select>
+                    </td>
+                    <td>
+                      <input type="file" accept="image/*" onChange={(e) => setEditImage(e.target.files[0])} />
+                    </td>
+                    <td>
+                      <button className="save-btn_product" onClick={handleSaveEdit}>
+                        <FaSave />
+                      </button>
+                      <button className="cancel-btn_product" onClick={() => setEditingProductId(null)}>
+                        <FaTimes />
+                      </button>
+                    </td>
+                  </>
+                ) : (
+                  <>
+                    <td>{product.productName}</td>
+                    <td>{product.description}</td>
+                    <td>${product.price}</td>
+                    <td>{product.quantity}</td>
+                    <td>{product.categoryId}</td>
+                    <td>
+                      {product.productImage && (
+                        <img src={`http://localhost:5000/uploads/${product.productImage}`} alt="Product" className="product-table-image" />
+                      )}
+                    </td>
+                    <td>
+                      <button className="edit-btn_product" onClick={() => handleEditProduct(product)}>
+                        <FaEdit />
+                      </button>
+                      <button className="delete-btn_product" onClick={() => handleDeleteProduct(product.id)}>
+                        <FaTrash />
+                      </button>
+                    </td>
+                  </>
+                )}
               </tr>
             ))}
           </tbody>
