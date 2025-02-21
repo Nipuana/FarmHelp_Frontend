@@ -32,12 +32,12 @@ const ProductListing = () => {
 
   const handleProductClick = (product) => {
     setSelectedProduct(product);
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = "hidden";
   };
 
   const closeProductDetails = () => {
     setSelectedProduct(null);
-    document.body.style.overflow = 'auto';
+    document.body.style.overflow = "auto";
   };
 
   // Cart functions remain the same
@@ -68,6 +68,51 @@ const ProductListing = () => {
     return cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
   };
 
+  const handleCheckout = async () => {
+    if (cart.length === 0) {
+        alert("Your cart is empty.");
+        return;
+    }
+
+    const token = localStorage.getItem("token");
+    if (!token) {
+        alert("You must be logged in to place an order.");
+        return;
+    }
+
+    const userId = localStorage.getItem("userId");
+    if (!userId || userId === "undefined") {
+        alert("User ID is missing. Please log in again.");
+        return;
+    }
+
+    const confirmCheckout = window.confirm("Are you sure you want to place this order?");
+    if (!confirmCheckout) return;
+
+    const orderData = {
+        userId: Number(userId),
+        totalAmount: parseFloat(calculateTotal()), // ✅ Ensure total is valid
+        orderItems: cart.map((item) => ({
+            productId: item.id,
+            quantity: item.quantity,
+        })), // ✅ Correct many-to-many format
+    };
+
+    console.log("📤 Sending Order Data:", orderData);
+
+    try {
+        const response = await API.createOrder(orderData);
+        if (response.status === 201) {
+            alert("Order placed successfully!");
+            setCart([]); // ✅ Clear cart after success
+            setShowCart(false);
+        }
+    } catch (err) {
+        console.error("❌ Error processing checkout:", err.response?.data || err.message);
+        alert(`Order failed: ${err.response?.data?.error || "Server error. Please try again later."}`);
+    }
+};
+
   if (loading) return <div className="loading"><img src={load_gif} alt="Loading" className="loading-image" /></div>;
 
   if (error) return (
@@ -77,24 +122,13 @@ const ProductListing = () => {
     </div>
   );
 
-  // Mock reviews data (you can replace this with actual reviews from your API)
-  const mockReviews = [
-    { id: 1, rating: 5, comment: "Great product!", user: "John D." },
-    { id: 2, rating: 4, comment: "Good quality but a bit pricey", user: "Sarah M." },
-    { id: 3, rating: 5, comment: "Exactly what I was looking for!", user: "Mike R." },
-  ];
-
   return (
-    <div className={`product-main ${selectedProduct ? 'with-details' : ''}`}>
-      <div className={`product-page ${selectedProduct ? 'shifted' : ''}`}>
+    <div className={`product-main ${selectedProduct ? "with-details" : ""}`}>
+      <div className={`product-page ${selectedProduct ? "shifted" : ""}`}>
         <div className="product-grid">
           {products.map((product) => (
-            <div 
-              key={product.id} 
-              className="product-card"
-              onClick={() => handleProductClick(product)}
-            >
-              <img 
+            <div key={product.id} className="product-card" onClick={() => handleProductClick(product)}>
+              <img
                 className="product-image1"
                 src={product.productImage ? `http://localhost:5000/uploads/${product.productImage}` : "/default-image.png"}
                 alt={product.productname}
@@ -104,11 +138,11 @@ const ProductListing = () => {
                 <p className="description">{product.description}</p>
                 <div className="product-footer">
                   <span className="product_price">${product.price}</span>
-                  <button 
+                  <button
                     onClick={(e) => {
                       e.stopPropagation();
                       addToCart(product);
-                    }} 
+                    }}
                     className="add-to-cart"
                   >
                     Add to Cart
@@ -127,7 +161,7 @@ const ProductListing = () => {
             <FiX size={24} />
           </button>
           <div className="details-content">
-            <img 
+            <img
               src={selectedProduct.productImage ? `http://localhost:5000/uploads/${selectedProduct.productImage}` : "/default-image.png"}
               alt={selectedProduct.productname}
               className="details-image"
@@ -136,43 +170,21 @@ const ProductListing = () => {
             <p className="details-description">{selectedProduct.description}</p>
             <div className="details-price-section">
               <span className="details-price">${selectedProduct.price}</span>
-              <button 
-                onClick={() => addToCart(selectedProduct)}
-                className="add-to-cart"
-              >
+              <button onClick={() => addToCart(selectedProduct)} className="add-to-cart">
                 Add to Cart
               </button>
-            </div>
-            
-            {/* Reviews Section */}
-            <div className="reviews-section">
-              <h2>Customer Reviews</h2>
-              <div className="reviews-list">
-                {mockReviews.map(review => (
-                  <div key={review.id} className="review-item">
-                    <div className="review-header">
-                      <div className="stars">
-                        {[...Array(review.rating)].map((_, i) => (
-                          <FaStar key={i} className="star-icon" />
-                        ))}
-                      </div>
-                      <span className="review-user">{review.user}</span>
-                    </div>
-                    <p className="review-comment">{review.comment}</p>
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
         </div>
       )}
 
-      {/* Cart Icon and Popup remain the same */}
+      {/* Cart Icon */}
       <div className="cart-icon" onClick={() => setShowCart(!showCart)}>
         <FiShoppingCart size={30} />
         {cart.length > 0 && <span className="cart-badge">{cart.length}</span>}
       </div>
 
+      {/* Cart Popup */}
       {showCart && (
         <div className="cart-popup">
           <h2>Shopping Cart</h2>
@@ -200,7 +212,7 @@ const ProductListing = () => {
               ))}
               <div className="cart-summary">
                 <strong>Total: ${calculateTotal()}</strong>
-                <button className="checkout-btn">Checkout</button>
+                <button className="checkout-btn" onClick={handleCheckout}>Checkout</button>
               </div>
             </>
           )}

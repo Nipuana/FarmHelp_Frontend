@@ -42,25 +42,29 @@
     background-color: #218838;
   }
   
-  .search-bar_review {
-    position: relative;
+   /* Search Bar */
+   .search-bar_review {
     display: flex;
     align-items: center;
+    background: #f1f1f1;
+    border-radius: 20px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
   }
   
   .search-bar_review input {
-    padding: 8px 10px;
-    padding-right: 35px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 12px;
+    padding: 5px;
+    margin: 0;
   }
   
   .search-icon_review {
-    position: absolute;
-    right: 10px;
-    color: #666;
-    pointer-events: none;
+    font-size: 12px;
+    color: gray;
+    margin-left: 5px; 
   }
   
   .add-review-form {
