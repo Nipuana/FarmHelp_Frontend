@@ -66,6 +66,9 @@ const AdminDashboard = () => {
   };
 
   const updateOrderStatus = async (orderId, newStatus) => {
+    const confirmUpdate = window.confirm(`Are you sure you want to change the order status to "${newStatus}"?`);
+    if (!confirmUpdate) return;
+
     try {
       await API.updateOrder(orderId, { status: newStatus });
 
@@ -119,6 +122,7 @@ const AdminDashboard = () => {
                   <option value="All">All</option>
                   <option value="pending">Pending</option>
                   <option value="shipped">Shipped</option>
+                  <option value="delivered">Delivered</option>
                 </select>
               </div>
 
@@ -154,7 +158,6 @@ const AdminDashboard = () => {
                               <ul className="product-list">
                                 {productsInOrder.map((op, index) => (
                                   <li key={index} className="product-item">
-                                    {/* ✅ Ensure correct product name is displayed */}
                                     {op.Product && op.Product.productName
                                       ? `${op.Product.productName} (Qty: ${op.quantity})`
                                       : `Unknown Product (Qty: ${op.quantity})`}
@@ -168,6 +171,13 @@ const AdminDashboard = () => {
                           <td>{order.status}</td>
                           <td>
                             <button
+                              className="btn pending"
+                              onClick={() => updateOrderStatus(order.id, "pending")}
+                              disabled={order.status === "pending"}
+                            >
+                              ⏳ Pending
+                            </button>
+                            <button
                               className="btn in-process"
                               onClick={() => updateOrderStatus(order.id, "shipped")}
                               disabled={order.status === "shipped"}
@@ -177,6 +187,7 @@ const AdminDashboard = () => {
                             <button
                               className="btn delivered"
                               onClick={() => updateOrderStatus(order.id, "delivered")}
+                              disabled={order.status === "delivered"}
                             >
                               🚚 Delivered
                             </button>

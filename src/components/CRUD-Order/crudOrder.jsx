@@ -5,11 +5,13 @@ import { FaSearch } from "react-icons/fa";
 
 const OrderTable = () => {
   const [orders, setOrders] = useState([]);
+  const [orderProducts, setOrderProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-  const [statusFilter, setStatusFilter] = useState(""); // Status filter
+  const [statusFilter, setStatusFilter] = useState("");
 
   useEffect(() => {
     fetchOrders();
+    fetchOrderProducts();
   }, []);
 
   const fetchOrders = async () => {
@@ -18,6 +20,15 @@ const OrderTable = () => {
       setOrders(response.data);
     } catch (err) {
       console.error("Error fetching orders", err);
+    }
+  };
+
+  const fetchOrderProducts = async () => {
+    try {
+      const response = await API.getAllOrderProducts();
+      setOrderProducts(response.data);
+    } catch (err) {
+      console.error("Error fetching order products", err);
     }
   };
 
@@ -65,23 +76,40 @@ const OrderTable = () => {
             <tr>
               <th>Id</th>
               <th>User ID</th>
-              <th>Quantity</th>
-              <th>Price</th>
+              <th>Products</th>
+              <th>Total Price</th>
               <th>Address</th>
               <th>Status</th>
             </tr>
           </thead>
           <tbody>
-            {getFilteredOrders().map((order) => (
-              <tr key={order.id}>
-                <td>{order.id}</td>
-                <td>{order.userId}</td>
-                <td>{order.orderQuantity}</td>
-                <td>${order.price}</td>
-                <td>{order.address}</td>
-                <td>{order.status}</td>
-              </tr>
-            ))}
+            {getFilteredOrders().map((order) => {
+              // Get products related to this order
+              const productsInOrder = orderProducts.filter(op => op.orderId === order.id);
+
+              return (
+                <tr key={order.id}>
+                  <td>{order.id}</td>
+                  <td>{order.userId}</td>
+                  <td>
+                    {productsInOrder.length > 0 ? (
+                      <ul className="product-list">
+                        {productsInOrder.map((op, index) => (
+                          <li key={index} className="product-item">
+                            {op.Product?.productName
+                              ? `${op.Product.productName} (Qty: ${op.quantity})`
+                              : `Unknown Product (Qty: ${op.quantity})`}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : "No products"}
+                  </td>
+                  <td>${order.price}</td>
+                  <td>{order.address}</td>
+                  <td>{order.status}</td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
