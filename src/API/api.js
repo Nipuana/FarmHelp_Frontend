@@ -88,9 +88,14 @@ export const addProductToOrder = async (orderProductData) => {
     return axios.post(`${API_URL}/order_products/add`, orderProductData, { headers: getAuthHeaders() });
 };
 
-export const getOrderProducts = async () => {
+export const getAllOrderProducts = async () => {
     return axios.get(`${API_URL}/order_products/view`, { headers: getAuthHeaders() });
 };
+
+export const getOrderProductsByOrderId = async (orderId) => {
+    return axios.get(`${API_URL}/order_products/view/${orderId}`, { headers: getAuthHeaders() });
+};
+
 
 export const deleteOrderProduct = async (orderId, productId) => {
     return axios.delete(`${API_URL}/order_products/delete/${orderId}/${productId}`, { headers: getAuthHeaders() });
@@ -147,8 +152,9 @@ export default {
     updateOrder,
     deleteOrder,
     addProductToOrder,
-    getOrderProducts,
+    getAllOrderProducts,
     deleteOrderProduct,
+    getOrderProductsByOrderId,
     createReview,
     getAllReviews,
     updateReview,

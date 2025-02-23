@@ -27,7 +27,6 @@ const OrderTable = () => {
     setEditingOrderId(order.id);
     setEditData({
       userId: order.userId, // Foreign Key
-      productId: order.productId, // Foreign Key
       orderQuantity: order.orderQuantity,
       price: order.price,
       address: order.address,
@@ -101,7 +100,6 @@ const OrderTable = () => {
             <tr>
               <th>Id</th>
               <th>User ID</th>
-              <th>Product ID</th>
               <th>Quantity</th>
               <th>Price</th>
               <th>Address</th>
@@ -114,7 +112,6 @@ const OrderTable = () => {
               <tr key={order.id}>
                 <td>{order.id}</td>
                 <td>{order.userId}</td> {/* Foreign Key */}
-                <td>{order.productId}</td> {/* Foreign Key */}
 
                 {editingOrderId === order.id ? (
                   <>
