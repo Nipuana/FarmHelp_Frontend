@@ -161,6 +161,27 @@
   background-color: #ddd;
 }
 
+/* Product List */
+.product-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.product-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 5px;
+}
+
+.product-image-small {
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
 /* Filter Section */
 .filter-section {
   margin-bottom: 15px;
@@ -186,6 +207,7 @@
 .filter-dropdown:hover {
   border-color: #007bff;
 }
+
 
 
 /* Responsive Fix */

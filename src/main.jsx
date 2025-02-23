@@ -33,7 +33,7 @@ const HeaderWrapper = () => {
 
 const Layout = ({ children }) => {
     const location = useLocation();
-    const adminRoutes = ["/ad_dash", "/CRUD1", "/CRUD2","/CRUD3","/CRUD4","/CRUD5"];
+    const adminRoutes = ["/ad_dash", "/CRUD1", "/CRUD2", "/CRUD3", "/CRUD4", "/CRUD5"];
     const isAdminPage = adminRoutes.includes(location.pathname);
 
     return (
@@ -45,22 +45,24 @@ const Layout = ({ children }) => {
     );
 };
 
-// General Protected Route (for authenticated users)
-const ProtectedRoute = ({ element }) => {
-    const token = localStorage.getItem("token");
-    return token ? element : <Navigate to="/Landing" replace />;
-};
-
-// Admin Protected Route (Only for Admin Users)
-const AdminRoute = ({ element }) => {
+// **Role-Based Route Handling**
+const RoleBasedRoute = ({ element, role }) => {
     const token = localStorage.getItem("token");
     const isAdmin = localStorage.getItem("isAdmin") === "true";
 
     if (!token) {
         return <Navigate to="/Landing" replace />;
     }
-    
-    return isAdmin ? element : <Navigate to="*" replace />;
+
+    if (role === "admin" && !isAdmin) {
+        return <Navigate to="/" replace />; // Redirect normal users away from admin pages
+    }
+
+    if (role === "user" && isAdmin) {
+        return <Navigate to="/ad_dash" replace />; // Redirect admins away from user pages
+    }
+
+    return element;
 };
 
 createRoot(document.getElementById("root")).render(
@@ -68,25 +70,27 @@ createRoot(document.getElementById("root")).render(
         <Router>
             <Layout>
                 <Routes>
-                    {/* General Routes */}
+                    {/* Public Routes */}
                     <Route path="/Landing" element={<Landing />} />
                     <Route path="/Login" element={<Login />} />
                     <Route path="/Register" element={<Register />} />
-                    
-                    {/* Protected Routes */}
-                    <Route path="*" element={<ProtectedRoute element={<NotFound />} />} />
-                    <Route path="/" element={<ProtectedRoute element={<Home />} />} />
-                    <Route path="/product" element={<ProtectedRoute element={<Product />} />} />
-                    <Route path="/about-us" element={<ProtectedRoute element={<Abt_US />} />} />
-                    <Route path="/faqs" element={<ProtectedRoute element={<FAQ />} />} />      
-                    
-                    {/* Admin Protected Routes */}
-                    <Route path="/CRUD1" element={<AdminRoute element={<CRUD_User />} />} />
-                    <Route path="/CRUD2" element={<AdminRoute element={<CRUD_Category />} />} />
-                    <Route path="/CRUD3" element={<AdminRoute element={<CRUD_Product />} />} />
-                    <Route path="/CRUD4" element={<AdminRoute element={<CRUD_Order />} />} />
-                    <Route path="/CRUD5" element={<AdminRoute element={<CRUD_Review />} />} />
-                    <Route path="/ad_dash" element={<AdminRoute element={<AdminDash />} />} />
+
+                    {/* User-Only Routes */}
+                    <Route path="/" element={<RoleBasedRoute element={<Home />} role="user" />} />
+                    <Route path="/product" element={<RoleBasedRoute element={<Product />} role="user" />} />
+                    <Route path="/about-us" element={<RoleBasedRoute element={<Abt_US />} role="user" />} />
+                    <Route path="/faqs" element={<RoleBasedRoute element={<FAQ />} role="user" />} />
+
+                    {/* Admin-Only Routes */}
+                    <Route path="/CRUD1" element={<RoleBasedRoute element={<CRUD_User />} role="admin" />} />
+                    <Route path="/CRUD2" element={<RoleBasedRoute element={<CRUD_Category />} role="admin" />} />
+                    <Route path="/CRUD3" element={<RoleBasedRoute element={<CRUD_Product />} role="admin" />} />
+                    <Route path="/CRUD4" element={<RoleBasedRoute element={<CRUD_Order />} role="admin" />} />
+                    <Route path="/CRUD5" element={<RoleBasedRoute element={<CRUD_Review />} role="admin" />} />
+                    <Route path="/ad_dash" element={<RoleBasedRoute element={<AdminDash />} role="admin" />} />
+
+                    {/* 404 Not Found */}
+                    <Route path="*" element={<NotFound />} />
                 </Routes>
             </Layout>
         </Router>

@@ -5,7 +5,7 @@ import "../../css/AdminCss/AdminDashboardBody.css";
 
 const AdminDashboard = () => {
   const [orders, setOrders] = useState([]);
-  const [filteredOrders, setFilteredOrders] = useState([]); // State for displaying sorted orders
+  const [filteredOrders, setFilteredOrders] = useState([]);
   const [filterStatus, setFilterStatus] = useState("All");
   const [totalUsers, setTotalUsers] = useState(0);
   const [totalSales, setTotalSales] = useState(0);
@@ -29,7 +29,7 @@ const AdminDashboard = () => {
       const [ordersResponse, usersResponse, orderProductsResponse] = await Promise.all([
         API.getAllOrders(),
         API.getUsers(),
-        API.getAllOrderProducts()
+        API.getAllOrderProducts() 
       ]);
 
       if (ordersResponse.data) {
@@ -151,10 +151,13 @@ const AdminDashboard = () => {
                           <td>{order.userId}</td>
                           <td>
                             {productsInOrder.length > 0 ? (
-                              <ul>
+                              <ul className="product-list">
                                 {productsInOrder.map((op, index) => (
-                                  <li key={index}>
-                                    {op.Product?.productname || `Product ${op.productId}`} (Qty: {op.quantity})
+                                  <li key={index} className="product-item">
+                                    {/* ✅ Ensure correct product name is displayed */}
+                                    {op.Product && op.Product.productName
+                                      ? `${op.Product.productName} (Qty: ${op.quantity})`
+                                      : `Unknown Product (Qty: ${op.quantity})`}
                                   </li>
                                 ))}
                               </ul>
