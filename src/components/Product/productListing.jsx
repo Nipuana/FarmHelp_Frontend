@@ -96,6 +96,12 @@ const CheckoutForm = ({ cart, total, deliveryLocation, onDeliveryLocationChange,
       <button className="close-checkout" onClick={onClose}>
         <FiX size={24} />
       </button>
+
+      {/* ✅ Payment Notice - Bold and Highlighted */}
+      <div className="payment-warning">
+        <p>⚠️ <strong>All payments are to be done in cash when the product arrives.</strong></p>
+      </div>
+
       <h2>Checkout</h2>
       <form onSubmit={onSubmit}>
         <div className="form-group">
