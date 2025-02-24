@@ -7,6 +7,7 @@ import { FaUserCircle } from "react-icons/fa"; // User icon
 const Header = () => {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [username, setUsername] = useState(localStorage.getItem("username"));
+  const [userId, setUserId] = useState(localStorage.getItem("userId"));
   const [isAdmin, setIsAdmin] = useState(localStorage.getItem("isAdmin") === "true"); 
   const [showDropdown, setShowDropdown] = useState(false);
   const [showLogoutPopup, setShowLogoutPopup] = useState(false);
@@ -42,8 +43,10 @@ const Header = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("username");
     localStorage.removeItem("isAdmin");
+    localStorage.removeItem("userId")
     setToken(null);
     setUsername(null);
+    setUserId(null);
     setIsAdmin(false);
     navigate("/Landing");
   };
@@ -64,7 +67,7 @@ const Header = () => {
             <ul className="nav-links">
               <li><Link to="/">Home</Link></li>
               <li><Link to="/product">Products</Link></li>
-              <li><Link to="/reviews">Reviews</Link></li>
+              <li><Link to="/Orders">My Orders</Link></li>
               <li><Link to="/about-us">About Us</Link></li>
               <li><Link to="/faqs">FAQs</Link></li>
             </ul>

@@ -5,18 +5,22 @@ import Header from "./components/Landing/Header.jsx";
 import Sidebar from "./components/Common/adminbar.jsx";
 import "./index.css";
 
-import Home from "./components/Home/homePage.jsx";
 import Landing from "./components/Landing/landingPage.jsx";
 import NotFound from "./components/NotFound/NotFound.jsx";
+import Register from "./components/Register/registerPage.jsx";
+import Login from "./components/Login/loginPage.jsx";
+
 import CRUD_User from "./components/CRUD-User/crudUserFinal.jsx";
 import CRUD_Category from "./components/CRUD-Category/crudCategoryFinal.jsx";
 import CRUD_Product from "./components/CRUD-Product/crudProductFinal.jsx";
 import CRUD_Order from "./components/CRUD-Order/crudOrderFinal.jsx";
 import CRUD_Review from "./components/CRUD-Review/crudReviewFinal.jsx";
 import AdminDash from './components/Admin/adminDashboard.jsx';
-import Register from "./components/Register/registerPage.jsx";
+
+
+import Home from "./components/Home/homePage.jsx";
 import Product from "./components/Product/productDashboard.jsx";
-import Login from "./components/Login/loginPage.jsx";
+import My_Orders from "./components/MyOrders/orderPageFinal.jsx";
 import Abt_US from "./components/AboutUs/AboutUs.jsx";
 import FAQ from "./components/faq/faq.jsx";
 
@@ -78,6 +82,7 @@ createRoot(document.getElementById("root")).render(
                     {/* User-Only Routes */}
                     <Route path="/" element={<RoleBasedRoute element={<Home />} role="user" />} />
                     <Route path="/product" element={<RoleBasedRoute element={<Product />} role="user" />} />
+                    <Route path="/Orders" element={<RoleBasedRoute element={<My_Orders />} role="user" />} />
                     <Route path="/about-us" element={<RoleBasedRoute element={<Abt_US />} role="user" />} />
                     <Route path="/faqs" element={<RoleBasedRoute element={<FAQ />} role="user" />} />
 
