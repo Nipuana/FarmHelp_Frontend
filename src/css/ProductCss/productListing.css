@@ -254,19 +254,6 @@
   position: relative;
 }
 
-/* Payment Warning Section */
-.payment-warning {
-  background-color: #ffcc00; /* Yellow Background */
-  color: #333; /* Dark Text */
-  font-size: 1.1rem;
-  font-weight: bold;
-  text-align: center;
-  padding: 10px;
-  border-radius: 8px;
-  margin-bottom: 15px;
-}
-
-
 .close-checkout {
   position: absolute;
   top: 10px;
