@@ -6,7 +6,6 @@ import '../../css/LandingCss/landingPage.css';
 function Landing() {
   return (
     <div className="App">
-      <p className='filler' >a</p>
       <Body/>
       <Footer/>
       

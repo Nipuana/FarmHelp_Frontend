@@ -6,7 +6,6 @@ import '../../css/HomeCss/homePage.css';
 function HomePage() {
   return (
     <div className="Homepage">
-      <p className='filler2' >a</p>
       <Body/>
       <Footer/>
       

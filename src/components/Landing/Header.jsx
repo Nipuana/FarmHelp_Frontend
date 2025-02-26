@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../../css/LandingCss/Header.css";
 import logo from "../../images/logo.png";
-import { FaUserCircle } from "react-icons/fa"; // User icon
+import { FaUserCircle, FaHome, FaBoxOpen, FaShoppingBag, FaInfoCircle, FaQuestionCircle } from "react-icons/fa";
 
 const Header = () => {
   const [token, setToken] = useState(localStorage.getItem("token"));
@@ -11,6 +11,7 @@ const Header = () => {
   const [isAdmin, setIsAdmin] = useState(localStorage.getItem("isAdmin") === "true"); 
   const [showDropdown, setShowDropdown] = useState(false);
   const [showLogoutPopup, setShowLogoutPopup] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
 
@@ -24,6 +25,18 @@ const Header = () => {
       setUsername(storedUsername);
       setIsAdmin(storedIsAdmin); 
     }
+
+    // Add scroll listener for header effect
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
@@ -43,17 +56,18 @@ const Header = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("username");
     localStorage.removeItem("isAdmin");
-    localStorage.removeItem("userId")
+    localStorage.removeItem("userId");
     setToken(null);
     setUsername(null);
     setUserId(null);
     setIsAdmin(false);
     navigate("/Landing");
+    setShowLogoutPopup(false);
   };
 
   return (
     <>
-      <header className="header">
+      <header className={`header ${isScrolled ? "scrolled" : ""}`}>
         {/* Logo Section */}
         <div className="logo-section">
           <Link to="/">
@@ -65,11 +79,36 @@ const Header = () => {
         {!isAdmin && (
           <nav className="navbar">
             <ul className="nav-links">
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/product">Products</Link></li>
-              <li><Link to="/Orders">My Orders</Link></li>
-              <li><Link to="/about-us">About Us</Link></li>
-              <li><Link to="/faqs">FAQs</Link></li>
+              <li>
+                <Link to="/">
+                  <FaHome className="nav-icon" />
+                  <span>Home</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/product">
+                  <FaBoxOpen className="nav-icon" />
+                  <span>Products</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/Orders">
+                  <FaShoppingBag className="nav-icon" />
+                  <span>My Orders</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/about-us">
+                  <FaInfoCircle className="nav-icon" />
+                  <span>About Us</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/faqs">
+                  <FaQuestionCircle className="nav-icon" />
+                  <span>FAQs</span>
+                </Link>
+              </li>
             </ul>
           </nav>
         )}
@@ -79,6 +118,7 @@ const Header = () => {
           {token ? (
             <div className={`user-profile ${showDropdown ? "show-dropdown" : ""}`} ref={dropdownRef}>
               <div className="user-info" onClick={() => setShowDropdown(!showDropdown)}>
+                <span className="username-display">{username}</span>
                 <FaUserCircle className="user-icon" />
               </div>
 
@@ -87,10 +127,14 @@ const Header = () => {
                 <div className="user-dropdown">
                   <ul>  
                     {isAdmin && (
-                      <Link to="/ad_dash" className="aaa"><li>Admin Panel</li></Link>
+                      <Link to="/ad_dash" className="aaa">
+                        <li>Admin Panel</li>
+                      </Link>
                     )}
-                    <Link to="/change-password" className="aaa"><li>Change Password</li></Link>
-                    <li className="aab" onClick={() => setShowLogoutPopup(true)} style={{color:"red"}}>Logout</li>
+                    <Link to="/change-password" className="aaa">
+                      <li>Change Password</li>
+                    </Link>
+                    <li className="aab" onClick={() => setShowLogoutPopup(true)}>Logout</li>
                   </ul>
                 </div>
               )}

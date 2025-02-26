@@ -5,7 +5,6 @@ import '../../css/CrudProductCss/crudProductFinal.css';
 function CRUD3() {
   return (
     <div className="crd_prd">
-      <p className='filler_prd'>a</p>
         <Body />
       </div>
   );

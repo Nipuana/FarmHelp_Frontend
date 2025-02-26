@@ -6,7 +6,6 @@ import '../../css/LoginCss/loginPage.css';
 function Login() {
   return (
     <div className="Login">
-      <p className='fillerLo' >a</p>
       <Fourm/>
       <Footer/>
       

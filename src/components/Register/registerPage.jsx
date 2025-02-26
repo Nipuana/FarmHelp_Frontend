@@ -6,7 +6,6 @@ import '../../css/Registercss/RegisterPage.css';
 function Register() {
   return (
     <div className="AdminLogin">
-      <p className='filler_Reg' >a</p>
       <Fourm/>
       <Footer/>
       

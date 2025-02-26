@@ -6,7 +6,6 @@ import "../../css/OrderCss/orderPageFinal.css";
 function AdminLogin() {
   return (
     <>
-      <p className='fillerOr' >a</p>
       <Listing/>
       <Footer/>
       
