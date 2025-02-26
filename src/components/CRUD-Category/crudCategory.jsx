@@ -97,28 +97,28 @@ const CategoryTable = () => {
   };
 
   return (
-    <div className="category-container">
-      <h1 className="category-title">Categories</h1>
+    <div className="category-container ant-category-container">
+      <h1 className="ant-category-title">Categories</h1>
 
-      <div className="header-section_category">
-        <button className="add-category-btn" onClick={() => setShowAddCategory(!showAddCategory)}>
+      <div className="ant-header-section">
+        <button className="ant-add-category-btn" onClick={() => setShowAddCategory(!showAddCategory)}>
           <FaPlus /> ADD NEW CATEGORY
         </button>
 
-        <div className="search-bar_category">
+        <div className="ant-search-bar">
           <input
             type="text"
             placeholder="Search Category Name"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-          <FaSearch className="search-icon_category" />
+          <FaSearch className="ant-search-icon" />
         </div>
       </div>
 
       {/* Add Category Form */}
       {showAddCategory && (
-        <div className="add-category-form">
+        <div className="ant-add-category-form">
           <input
             type="text"
             placeholder="Category Name"
@@ -131,13 +131,13 @@ const CategoryTable = () => {
             value={newCategory.categoryDescription}
             onChange={(e) => setNewCategory({ ...newCategory, categoryDescription: e.target.value })}
           />
-          <button className="save-btn_category" onClick={handleAddCategory}>
+          <button className="ant-save-btn" onClick={handleAddCategory}>
             <FaSave /> Save
           </button>
         </div>
       )}
 
-      <div className="category-table">
+      <div className="ant-category-table">
         <table>
           <thead>
             <tr>
@@ -175,15 +175,15 @@ const CategoryTable = () => {
                 </td>
                 <td>
                   {editingCategoryId === category.id ? (
-                    <button className="save-btn_category" onClick={handleUpdateCategory}>
+                    <button className="ant-save-btn" onClick={handleUpdateCategory}>
                       <FaSave />
                     </button>
                   ) : (
                     <>
-                      <button className="edit-btn_category" onClick={() => handleEdit(category)}>
+                      <button className="ant-edit-btn" onClick={() => handleEdit(category)}>
                         <FaEdit />
                       </button>
-                      <button className="delete-btn_category" onClick={() => handleDeleteCategory(category.id)}>
+                      <button className="ant-delete-btn" onClick={() => handleDeleteCategory(category.id)}>
                         <FaTrash />
                       </button>
                     </>
@@ -196,11 +196,11 @@ const CategoryTable = () => {
       </div>
 
       {/* Pagination */}
-      <div className="pagination_category">
+      <div className="ant-pagination">
         {Array.from({ length: Math.ceil(categories.length / itemsPerPage) }, (_, index) => (
           <button
             key={index}
-            className={currentPage === index + 1 ? "active_category" : ""}
+            className={currentPage === index + 1 ? "ant-active" : ""}
             onClick={() => setCurrentPage(index + 1)}
           >
             {index + 1}

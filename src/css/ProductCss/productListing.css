@@ -265,7 +265,7 @@ button {
   right: 0;
   margin-top: 80px;
   width: 400px;
-  height: 100vh;
+  height: 90vh;
   background-color: var(--card-bg);
   box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
@@ -737,7 +737,7 @@ button {
   }
   
   .cart-popup, .product-details-panel {
-    width: 100%;
+    width: 90%;
   }
   
   .cart-icon {

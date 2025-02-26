@@ -1,296 +1,315 @@
-/* Sidebar */
-.sidebar {
-  width: 250px; 
-  background-color: #2c2c2c;
-  color: white;
+/* Modern User Management Styles */
+:root {
+  --primary-color: #4361ee;
+  --primary-hover: #3a56d4;
+  --secondary-color: #f72585;
+  --success-color: #10b981;
+  --danger-color: #ef4444;
+  --text-dark: #1f2937;
+  --text-light: #6b7280;
+  --bg-light: #ffffff;
+  --bg-dark: #f9fafb;
+  --border-color: #e5e7eb;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --radius: 8px;
+}
+
+/* Container Styles */
+.user-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: var(--bg-light);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* Header Styles */
+.user-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 1.5rem;
+}
+
+.header-section_usc {
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
 }
 
-/* User Container */
-.user-container_user {
-  margin-left: 250px; /* Ensures it doesn't overlap the sidebar */
-  flex-grow: 1;
-  padding: 30px;
-  min-width: calc(100% - 250px); 
-  height: calc(100vh - 80px);
-  margin-top: 80px; 
-  box-sizing: border-box;
+@media (min-width: 768px) {
+  .header-section {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
-.us1 {
-  text-align: center;
-  margin: 10px;
-}
-
-/* Header Section */
-.header-section_user {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-/* Add New User Button */
-.add-user-btn_user {
-  background: #4caf50;
-  color: white;
-  padding: 10px 15px;
-  font-size: 14px;
-  font-weight: bold;
-  border: none;
-  border-radius: 5px;
+/* Button Styles */
+.btn {
   cursor: pointer;
-  transition: background 0.3s ease;
+  font-weight: 500;
+  border: none;
+  border-radius: var(--radius);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
-.add-user-btn_user:hover {
-  background: #388e3c;
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.75rem 1.25rem;
 }
 
-/* Slide animation for Add User Form */
-@keyframes slideDown {
-  0% {
-    transform: translateY(-20px);
-    opacity: 0;
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-success {
+  background-color: var(--success-color);
+  color: white;
+  padding: 0.5rem;
+}
+
+.btn-success:hover {
+  opacity: 0.9;
+}
+
+.btn-danger {
+  background-color: var(--danger-color);
+  color: white;
+  padding: 0.5rem;
+}
+
+.btn-danger:hover {
+  opacity: 0.9;
+}
+
+.btn-edit {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.5rem;
+}
+
+.btn-edit:hover {
+  opacity: 0.9;
+}
+
+.add-user-btn {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .add-user-btn {
+    width: auto;
   }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
+}
+
+/* Search Bar Styles */
+.search-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .search-bar {
+    width: 300px;
   }
 }
 
-/* Add User Form with sliding effect */
-.add-user-form_user {
+.search-input {
+  width: 100%;
+  padding: 0.75rem 2.5rem 0.75rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.search-input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(67, 97, 238, 0.2);
+}
+
+.search-icon {
+  position: absolute;
+  right: 0.75rem;
+  color: var(--text-light);
+}
+
+/* Form Styles */
+.add-user-form {
+  background-color: var(--bg-dark);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  margin-bottom: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .add-user-form {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.form-group {
   display: flex;
   flex-direction: column;
-  margin-bottom: 15px;
-  width: 450px;
-  background-color: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  animation: slideDown 0.5s ease forwards;
-  transition: max-height 0.5s ease-in-out;
-  overflow: hidden;
+  gap: 0.5rem;
 }
 
-/* Hidden state when form is closed */
-.add-user-form_user.hidden {
-  max-height: 0;
-  padding: 0;
-  overflow: hidden;
+.form-input {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  outline: none;
+  transition: border-color 0.2s ease;
 }
 
-/* Form Inputs */
-.add-user-form_user input,
-.add-user-form_user select {
-  width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 14px;
+.form-input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(67, 97, 238, 0.2);
 }
 
-/* Improved Password Field with Show/Hide Icon */
-.password-container {
+.password-input {
   position: relative;
-  width: 100%;
 }
 
-.password-container input {
-  width: 100%;
-  padding-right: 40px; /* Space for the eye icon */
-}
-
-.password-toggle-icon {
+.toggle-password {
   position: absolute;
-  right: 10px;
+  right: 1rem;
   top: 50%;
   transform: translateY(-50%);
-  cursor: pointer;
-  font-size: 16px;
-  color: #666;
-}
-
-.password-toggle-icon:hover {
-  color: #000;
-}
-
-/* Improved Dropdown Styling */
-.add-user-form_user select {
-  appearance: none;
-  background: #fff url("data:image/svg+xml;utf8,<svg fill='%23999' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>") no-repeat right 10px center;
-  background-size: 20px;
-  cursor: pointer;
-  padding-right: 30px;
-}
-
-/* Save and Cancel Buttons */
-.button-container {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin-top: 10px;
-}
-
-.save-btn_user {
-  background-color: #4caf50;
-  color: white;
-  padding: 12px 20px;
-  font-size: 16px;
-  font-weight: bold;
+  background: none;
   border: none;
-  border-radius: 5px;
+  color: var(--text-light);
   cursor: pointer;
-  transition: background 0.3s ease;
-  flex: 1;
-  margin-right: 5px;
 }
 
-.save-btn_user:hover {
-  background-color: #388e3c;
-}
-
-.cancel-btn_user {
-  background-color: #f44336;
-  color: white;
-  padding: 12px 20px;
-  font-size: 16px;
-  font-weight: bold;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-  flex: 1;
-  margin-left: 5px;
-}
-
-.cancel-btn_user:hover {
-  background-color: #d32f2f;
-}
-
-/* Search Bar */
-.search-bar_user {
+.checkbox-group {
   display: flex;
   align-items: center;
-  background: #f1f1f1;
-  border-radius: 20px;
-  padding: 5px 10px;
-  border: 1px solid #ccc;
+  gap: 0.5rem;
 }
 
-.search-bar_user input {
-  border: none;
-  background: transparent;
-  outline: none;
-  font-size: 12px;
-  padding: 5px;
-  margin: 0;
+/* Table Styles */
+.user-table {
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-color);
 }
 
-.search-icon_user {
-  font-size: 12px;
-  color: gray;
-  margin-left: 5px; 
-}
-
-/* User Table */
-.user-table_user {
-  background: #fff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.user-table_user table {
+.table {
   width: 100%;
   border-collapse: collapse;
+  text-align: left;
 }
 
-.user-table_user th,
-.user-table_user td {
-  border: 1px solid #ddd;
-  padding: 12px;
-  text-align: center;
+.table th {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+  font-weight: 600;
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-color);
 }
 
-.user-table_user th {
-  background: #f5f5f5;
-  font-weight: bold;
+.table td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-dark);
 }
 
-/* Edit and Delete Buttons */
-.edit-btn_user,
-.delete-btn_user {
-  padding: 8px;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  transition: background 0.3s ease;
+.table tr:last-child td {
+  border-bottom: none;
 }
 
-.edit-btn_user {
-  background-color: #007bff;
-  color: white;
+.table tr:hover {
+  background-color: rgba(67, 97, 238, 0.05);
 }
 
-.edit-btn_user:hover {
-  background-color: #0056b3;
+.actions-cell {
+  display: flex;
+  gap: 0.5rem;
 }
 
-.delete-btn_user {
-  background-color: red;
-  color: white;
-}
-
-.delete-btn_user:hover {
-  background-color: darkred;
-}
-
-/* Pagination */
-.pagination_user {
+/* Pagination Styles */
+.pagination {
   display: flex;
   justify-content: center;
-  margin-top: 15px;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
 }
 
-.pagination_user button {
-  padding: 8px 12px;
-  margin: 5px;
-  border-radius: 5px;
-  background-color: #ddd;
+.page-btn {
+  min-width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.pagination_user .active_user {
-  background-color: green;
+.page-btn:hover {
+  background-color: var(--primary-color);
   color: white;
+  border-color: var(--primary-color);
 }
 
-/* Mobile Responsiveness */
-@media screen and (max-width: 768px) {
-  .header-section_user {
-    flex-direction: column;
-    gap: 10px;
+.page-btn.active {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+.nav-btn {
+  min-width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nav-btn:hover {
+  background-color: var(--bg-dark);
+}
+
+.nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .user-container {
+    padding: 1rem;
   }
   
-  .add-user-form_user {
-    width: 100%;
-  }
-
-  .button-container {
-    flex-direction: column;
-  }
-
-  .save-btn_user,
-  .cancel-btn_user {
-    width: 100%;
-    margin: 5px 0;
+  .table th, .table td {
+    padding: 0.75rem 0.5rem;
   }
 }

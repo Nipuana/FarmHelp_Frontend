@@ -150,6 +150,59 @@ const ProductTable = () => {
         </div>
       </div>
 
+          {showAddProduct && (
+      <div className="add-product-form">
+        <h2>Add New Product</h2>
+        <input
+          type="text"
+          placeholder="Product Name"
+          value={newProduct.productname}
+          onChange={(e) => setNewProduct({ ...newProduct, productname: e.target.value })}
+        />
+        <input
+          type="text"
+          placeholder="Description"
+          value={newProduct.description}
+          onChange={(e) => setNewProduct({ ...newProduct, description: e.target.value })}
+        />
+        <input
+          type="number"
+          placeholder="Price"
+          value={newProduct.price}
+          onChange={(e) => setNewProduct({ ...newProduct, price: e.target.value })}
+        />
+        <input
+          type="number"
+          placeholder="Quantity"
+          value={newProduct.quantity}
+          onChange={(e) => setNewProduct({ ...newProduct, quantity: e.target.value })}
+        />
+        <select
+          value={newProduct.categoryId}
+          onChange={(e) => setNewProduct({ ...newProduct, categoryId: e.target.value })}
+        >
+          <option value="">Select Category</option>
+          {categories.map((category) => (
+            <option key={category.id} value={category.id}>
+              {category.categoryName}
+            </option>
+          ))}
+        </select>
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => setNewProduct({ ...newProduct, productImage: e.target.files[0] })}
+        />
+        <button className="save-btn_product" onClick={handleAddProduct}>
+          <FaSave /> Save
+        </button>
+        <button className="cancel-btn_product" onClick={() => setShowAddProduct(false)}>
+          <FaTimes /> Cancel
+        </button>
+      </div>
+    )}
+
+
       {/* Product Table */}
       <div className="product-table">
         <table>

@@ -7,6 +7,7 @@ const OrderPage = () => {
   const [orders, setOrders] = useState([]);
   const [orderProducts, setOrderProducts] = useState([]);
   const [products, setProducts] = useState([]);
+  const [reviews, setReviews] = useState([]); // ✅ Store existing reviews
   const [sortedOrders, setSortedOrders] = useState([]);
   const [sortBy, setSortBy] = useState("id");
   const [loading, setLoading] = useState(true);
@@ -20,6 +21,7 @@ const OrderPage = () => {
     fetchOrders();
     fetchOrderProducts();
     fetchProducts();
+    fetchReviews(); // ✅ Fetch existing reviews
   }, []);
 
   useEffect(() => {
@@ -80,6 +82,16 @@ const OrderPage = () => {
     }
   };
 
+  const fetchReviews = async () => {
+    try {
+      const response = await API.getAllReviews();
+      setReviews(response.data); // ✅ Store all existing reviews
+    } catch (err) {
+      console.error("Error fetching reviews:", err);
+      setError("Failed to fetch reviews.");
+    }
+  };
+
   const getProductDetails = (productId) => {
     const product = products.find(p => p.id === productId);
     return {
@@ -88,8 +100,12 @@ const OrderPage = () => {
     };
   };
 
+  const getUserReview = (orderProductId) => {
+    return reviews.find(review => review.orderProductId === orderProductId);
+  };
+
   const openReviewModal = (product) => {
-    setSelectedProduct(product);
+    setSelectedProduct({ ...product, orderProductId: product.id });
     setComment("");
     setRating(0);
     setReviewModal(true);
@@ -105,47 +121,24 @@ const OrderPage = () => {
       alert("Please provide a review and select a rating.");
       return;
     }
-  
-    console.log("Submitting Review:", {
-      productId: selectedProduct.productId,
-      userId: localStorage.getItem("userId"),
-      Rating,
-      Comment
-    }); // ✅ Debugging log before API call
-  
+
     try {
-      await API.createReview({
+      const newReview = {
         productId: selectedProduct.productId,
+        orderProductId: selectedProduct.orderProductId,
         userId: Number(localStorage.getItem("userId")),
-        Rating,  // Ensure rating is being sent
+        Rating,
         Comment
-      });
-  
+      };
+
+      await API.createReview(newReview);
+
       alert("Review submitted successfully!");
+      setReviews(prevReviews => [...prevReviews, newReview]); // ✅ Add the review to state
       closeReviewModal();
     } catch (err) {
       console.error("Error submitting review:", err);
       alert("Failed to submit review. Please try again.");
-    }
-  };
-  
-
-  const handleCancelOrder = async (orderId) => {
-    const isConfirmed = window.confirm("Are you sure you want to cancel this order?");
-    if (!isConfirmed) return;
-
-    try {
-      await API.updateOrder(orderId, { status: "canceled" });
-
-      setOrders(prevOrders =>
-        prevOrders.map(order =>
-          order.id === orderId ? { ...order, status: "canceled" } : order
-        )
-      );
-      alert("Your order has been canceled.");
-    } catch (err) {
-      console.error("Error canceling order:", err);
-      alert("Failed to cancel order. Please try again.");
     }
   };
 
@@ -183,14 +176,28 @@ const OrderPage = () => {
                     {productsInOrder.length > 0 ? (
                       productsInOrder.map((product, index) => {
                         const { productName, productImage } = getProductDetails(product.productId);
+                        const userReview = getUserReview(product.id); // ✅ Check review by orderProductId
+
                         return (
                           <div key={index} className="product-item">
                             <img src={productImage} alt={productName} className="product-image" />
                             <div className="product-details">
                               <p><strong>{productName}</strong></p>
                               <p>Quantity: {product.quantity}</p>
+
                               {order.status === "delivered" && (
-                                <button className="review-btn" onClick={() => openReviewModal(product)}>Review</button>
+                                userReview ? (
+                                  <div className="user-review">
+                                    <p><strong>Your Review:</strong> {userReview.Comment}</p>
+                                    <div className="review-rating">
+                                      {[...Array(5)].map((_, i) => (
+                                        <FaStar key={i} className={i < userReview.Rating ? "star filled" : "star"} />
+                                      ))}
+                                    </div>
+                                  </div>
+                                ) : (
+                                  <button className="review-btn" onClick={() => openReviewModal(product)}>Review</button>
+                                )
                               )}
                             </div>
                           </div>
@@ -199,13 +206,7 @@ const OrderPage = () => {
                     ) : (
                       <p>No products in this order.</p>
                     )}
-                    
                   </div>
-                  {order.status === "pending" && (
-                    <button className="cancel-order-btn" onClick={() => handleCancelOrder(order.id)}>
-                      <FaTimes /> Cancel Order
-                    </button>
-                  )}
                 </div>
               );
             })
@@ -217,26 +218,13 @@ const OrderPage = () => {
         <div className="review-modal">
           <div className="review-modal-content">
             <h2>Review {selectedProduct && getProductDetails(selectedProduct.productId).productName}</h2>
-            <textarea
-              placeholder="Write your review..."
-              value={Comment}
-              onChange={(e) => setComment(e.target.value)}
-            />
+            <textarea placeholder="Write your review..." value={Comment} onChange={(e) => setComment(e.target.value)} />
 
-            {/* ⭐ Star Rating Section */}
             <div className="rating-container">
-                {[1, 2, 3, 4, 5].map(star => (
-                  <FaStar
-                    key={star}
-                    className={`rating-star ${star <= Rating ? "selected" : ""}`}
-                    onClick={() => {
-                      console.log("Selected Rating:", star); // Debugging
-                      setRating(star);
-                    }}
-                  />
-                ))}
-              </div>
-
+              {[1, 2, 3, 4, 5].map(star => (
+                <FaStar key={star} className={`rating-star ${star <= Rating ? "selected" : ""}`} onClick={() => setRating(star)} />
+              ))}
+            </div>
 
             <button onClick={handleReviewSubmit}>Submit Review</button>
             <button onClick={closeReviewModal}>Cancel</button>

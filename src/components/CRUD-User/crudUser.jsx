@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import API from "../../API/api"; // API file for backend calls
+import API from "../../API/api";
+import { FaEdit, FaTrash, FaSave, FaSearch, FaUserPlus, FaEye, FaEyeSlash, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import "../../css/CrudUserCss/crudUser.css";
-import { FaEdit, FaTrash, FaSave, FaSearch, FaUserPlus, FaEye, FaEyeSlash } from "react-icons/fa";
 
 const UserTable = () => {
   const [users, setUsers] = useState([]);
@@ -11,7 +11,7 @@ const UserTable = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
   const [showAddUser, setShowAddUser] = useState(false);
-  const [showPassword, setShowPassword] = useState(false); // State for password visibility toggle
+  const [showPassword, setShowPassword] = useState(false);
   const [newUser, setNewUser] = useState({
     username: "",
     email: "",
@@ -38,7 +38,7 @@ const UserTable = () => {
       username: user.username,
       email: user.email,
       isAdmin: user.isAdmin,
-    }); // Only allow editing of username, email, and isAdmin, keeping the ID unchanged.
+    });
   };
 
   const handleUpdateUser = async () => {
@@ -93,145 +93,193 @@ const UserTable = () => {
       .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
   };
 
-  return (
-    <div className="user-container_user">
-      <h1 className="us1">Users</h1>
+  const filteredUsers = users.filter(user => user.id.toString().includes(searchQuery));
+  const totalPages = Math.ceil(filteredUsers.length / itemsPerPage);
 
-      <div className="header-section_user">
-        <button className="add-user-btn_user" onClick={() => setShowAddUser(!showAddUser)}>
-          <FaUserPlus /> ADD NEW USER
+  return (
+    <div className="user-container">
+      <h1 className="user-title">User Management</h1>
+
+      <div className="header-section_usc">
+        <button 
+          className="btn btn-primary add-user-btn" 
+          onClick={() => setShowAddUser(!showAddUser)}
+        >
+          <FaUserPlus /> {showAddUser ? "HIDE FORM" : "ADD NEW USER"}
         </button>
 
-        <div className="search-bar_user">
+        <div className="search-bar">
           <input
             type="text"
-            placeholder="Search with ID"
+            className="search-input"
+            placeholder="Search by ID"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-          <FaSearch className="search-icon_user" />
+          <FaSearch className="search-icon" />
         </div>
       </div>
 
       {/* Add User Form */}
       {showAddUser && (
-        <div className="add-user-form_user">
-          <input
-            type="text"
-            placeholder="Username"
-            value={newUser.username}
-            onChange={(e) => setNewUser({ ...newUser, username: e.target.value })}
-          />
-          <input
-            type="email"
-            placeholder="Email"
-            value={newUser.email}
-            onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
-          />
-          <div className="password-input_user">
+        <div className="add-user-form">
+          <div className="form-group">
             <input
-              type={showPassword ? "text" : "password"}
-              placeholder="Password"
-              value={newUser.password}
-              onChange={(e) => setNewUser({ ...newUser, password: e.target.value })}
+              type="text"
+              className="form-input"
+              placeholder="Username"
+              value={newUser.username}
+              onChange={(e) => setNewUser({ ...newUser, username: e.target.value })}
             />
-            <button type="button" className="toggle-password_user" onClick={() => setShowPassword(!showPassword)}>
-              {showPassword ? <FaEye/> : <FaEyeSlash/>}
+          </div>
+          
+          <div className="form-group">
+            <input
+              type="email"
+              className="form-input"
+              placeholder="Email"
+              value={newUser.email}
+              onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
+            />
+          </div>
+          
+          <div className="form-group">
+            <div className="password-input">
+              <input
+                type={showPassword ? "text" : "password"}
+                className="form-input"
+                placeholder="Password"
+                value={newUser.password}
+                onChange={(e) => setNewUser({ ...newUser, password: e.target.value })}
+              />
+              <button 
+                type="button" 
+                className="toggle-password" 
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </button>
+            </div>
+          </div>
+          
+          <div className="form-group">
+            <div className="checkbox-group">
+              <input
+                type="checkbox"
+                id="isAdmin"
+                checked={newUser.isAdmin}
+                onChange={(e) => setNewUser({ ...newUser, isAdmin: e.target.checked })}
+              />
+              <label htmlFor="isAdmin">Admin User</label>
+            </div>
+            <button className="btn btn-primary" onClick={handleAddUser}>
+              <FaSave /> Save User
             </button>
           </div>
-          <label>
-            Admin:
-            <input
-              type="checkbox"
-              checked={newUser.isAdmin}
-              onChange={(e) => setNewUser({ ...newUser, isAdmin: e.target.checked })}
-            />
-          </label>
-          <button className="save-btn_user" onClick={handleAddUser}>
-            <FaSave /> Save
-          </button>
         </div>
       )}
 
-      <div className="user-table_user">
-        <table>
+      <div className="user-table">
+        <table className="table">
           <thead>
             <tr>
-              <th>Id</th>
-              <th>Name</th>
+              <th>ID</th>
+              <th>Username</th>
               <th>Email</th>
-              <th>isAdmin</th>
+              <th>Admin</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-  {getFilteredUsers().map((user) => (
-    <tr key={user.id}>
-      <td>{user.id}</td>
-      <td>
-        {editingUserId === user.id ? (
-          <input
-            type="text"
-            value={editData.username}
-            onChange={(e) => setEditData({ ...editData, username: e.target.value })}
-          />
-        ) : (
-          user.username
-        )}
-      </td>
-      <td>
-        {editingUserId === user.id ? (
-          <input
-            type="email"
-            value={editData.email}
-            onChange={(e) => setEditData({ ...editData, email: e.target.value })}
-          />
-        ) : (
-          user.email
-        )}
-      </td>
-      <td>
-        <input
-          type="checkbox"
-          checked={editingUserId === user.id ? editData.isAdmin : user.isAdmin}
-          onChange={(e) => setEditData({ ...editData, isAdmin: e.target.checked })}
-          disabled={editingUserId !== user.id}
-        />
-      </td>
-      <td>
-        {editingUserId === user.id ? (
-          <button className="save-btn_user" onClick={handleUpdateUser}>
-            <FaSave />
-          </button>
-        ) : (
-          <>
-            <button className="edit-btn_user" onClick={() => handleEdit(user)}>
-              <FaEdit />
-            </button>
-            <button className="delete-btn_user" onClick={() => handleDeleteUser(user.id)}>
-              <FaTrash />
-            </button>
-          </>
-        )}
-      </td>
-    </tr>
-  ))}
-</tbody>
+            {getFilteredUsers().map((user) => (
+              <tr key={user.id}>
+                <td>{user.id}</td>
+                <td>
+                  {editingUserId === user.id ? (
+                    <input
+                      type="text"
+                      className="form-input"
+                      value={editData.username}
+                      onChange={(e) => setEditData({ ...editData, username: e.target.value })}
+                    />
+                  ) : (
+                    user.username
+                  )}
+                </td>
+                <td>
+                  {editingUserId === user.id ? (
+                    <input
+                      type="email"
+                      className="form-input"
+                      value={editData.email}
+                      onChange={(e) => setEditData({ ...editData, email: e.target.value })}
+                    />
+                  ) : (
+                    user.email
+                  )}
+                </td>
+                <td>
+                  <div className="checkbox-group">
+                    <input
+                      type="checkbox"
+                      checked={editingUserId === user.id ? editData.isAdmin : user.isAdmin}
+                      onChange={(e) => setEditData({ ...editData, isAdmin: e.target.checked })}
+                      disabled={editingUserId !== user.id}
+                    />
+                  </div>
+                </td>
+                <td className="actions-cell">
+                  {editingUserId === user.id ? (
+                    <button className="btn btn-success" onClick={handleUpdateUser}>
+                      <FaSave />
+                    </button>
+                  ) : (
+                    <>
+                      <button className="btn btn-edit" onClick={() => handleEdit(user)}>
+                        <FaEdit />
+                      </button>
+                      <button className="btn btn-danger" onClick={() => handleDeleteUser(user.id)}>
+                        <FaTrash />
+                      </button>
+                    </>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
         </table>
       </div>
 
       {/* Pagination */}
-      <div className="pagination_user">
-        {Array.from({ length: Math.ceil(users.length / itemsPerPage) }, (_, index) => (
-          <button
-            key={index}
-            className={currentPage === index + 1 ? "active_user" : ""}
-            onClick={() => setCurrentPage(index + 1)}
+      {totalPages > 0 && (
+        <div className="pagination">
+          <button 
+            className="nav-btn"
+            onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
           >
-            {index + 1}
+            <FaChevronLeft />
           </button>
-        ))}
-      </div>
+          
+          {Array.from({ length: totalPages }, (_, index) => (
+            <button
+              key={index}
+              className={`page-btn ${currentPage === index + 1 ? "active" : ""}`}
+              onClick={() => setCurrentPage(index + 1)}
+            >
+              {index + 1}
+            </button>
+          ))}
+          
+          <button 
+            className="nav-btn"
+            onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+            disabled={currentPage === totalPages}
+          >
+            <FaChevronRight />
+          </button>
+        </div>
+      )}
     </div>
   );
 };

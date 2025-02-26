@@ -1,266 +1,331 @@
-/* Sidebar */
-.sidebar {
-  width: 250px; 
-  background-color: #2c2c2c;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
+/* ===== ISOLATED CATEGORY TABLE STYLES ===== */
+/* This approach uses a namespace prefix and highly specific selectors */
+
+/* Variables confined to category component */
+.ant-category-container {
+  --cat-primary-color: #3a86ff;
+  --cat-primary-hover: #2a75ee;
+  --cat-secondary-color: #f4a261;
+  --cat-light-bg: #f8f9fa;
+  --cat-dark-text: #333;
+  --cat-medium-text: #555;
+  --cat-light-text: #777;
+  --cat-danger: #ff5a5f;
+  --cat-danger-hover: #e04347;
+  --cat-success: #06d6a0;
+  --cat-success-hover: #05c091;
+  --cat-green-header: #4d744d;
+  --cat-border-radius: 8px;
+  --cat-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --cat-transition: all 0.3s ease;
 }
 
-/* Category Container */
+/* ===== MAIN CONTAINER ===== */
+/* Renamed with prefix to avoid conflicts */
 .category-container {
-  margin-left: 250px; 
-  flex-grow: 1;
-  padding: 30px;
-  min-width: calc(100% - 250px);
-  height: calc(100vh - 80px);
-  margin-top: 80px; 
+  padding: 2rem 1.5rem;
+  font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+  margin-left: 30%;
+  color: var(--cat-dark-text);
+  background-color: white;
+  border-radius: var(--cat-border-radius);
+  width: 100%;
   box-sizing: border-box;
 }
-  
-.category-title {
+
+/* Renamed class to avoid conflicts */
+.ant-category-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #f4a261;
+  margin-bottom: 2rem;
   text-align: center;
-  margin: 10px;
+  position: relative;
 }
 
-/* Header Section */
-.header-section_category {
+.ant-category-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: #4d744d;
+  border-radius: 2px;
+}
+
+/* ===== HEADER SECTION ===== */
+.ant-header-section {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 2rem;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
-/* Add New Category Button */
-.add-category-btn {
-  background: #4caf50;
-  color: white;
-  padding: 10px 15px;
-  font-size: 14px;
-  font-weight: bold;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.add-category-btn:hover {
-  background: #388e3c;
-}
-
-/* Slide animation for Add Category Form */
-@keyframes slideDown {
-  0% {
-    transform: translateY(-20px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* Add Category Form with sliding effect */
-.add-category-form {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 15px;
-  width: 450px;
-  background-color: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  animation: slideDown 0.5s ease forwards;
-  transition: max-height 0.5s ease-in-out;
-  overflow: hidden;
-}
-
-/* Hidden state when form is closed */
-.add-category-form.hidden {
-  max-height: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
-/* Form Inputs */
-.add-category-form input,
-.add-category-form select {
-  width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 14px;
-}
-
-/* Improved Dropdown Styling */
-.add-category-form select {
-  appearance: none;
-  background: #fff url("data:image/svg+xml;utf8,<svg fill='%23999' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>") no-repeat right 10px center;
-  background-size: 20px;
-  cursor: pointer;
-  padding-right: 30px;
-}
-
-/* Save and Cancel Buttons */
-.button-container {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin-top: 10px;
-}
-
-.save-btn_category {
-  background-color: #4caf50;
-  color: white;
-  padding: 12px 20px;
-  font-size: 16px;
-  font-weight: bold;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-  flex: 1;
-  margin-right: 5px;
-}
-
-.save-btn_category:hover {
-  background-color: #388e3c;
-}
-
-.cancel-btn_category {
-  background-color: #f44336;
-  color: white;
-  padding: 12px 20px;
-  font-size: 16px;
-  font-weight: bold;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-  flex: 1;
-  margin-left: 5px;
-}
-
-.cancel-btn_category:hover {
-  background-color: #d32f2f;
-}
-
-/* Search Bar */
-.search-bar_category {
+.ant-add-category-btn {
   display: flex;
   align-items: center;
-  background: #f1f1f1;
-  border-radius: 20px;
-  padding: 5px 10px;
-  border: 1px solid #ccc;
+  gap: 8px;
+  background-color: var(--cat-primary-color);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--cat-border-radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--cat-transition);
+  font-size: 0.95rem;
 }
 
-.search-bar_category input {
-  border: none;
-  background: transparent;
+.ant-add-category-btn:hover {
+  background-color: var(--cat-primary-hover);
+  transform: translateY(-2px);
+}
+
+/* ===== SEARCH BAR ===== */
+.ant-search-bar {
+  position: relative;
+  flex-grow: 1;
+  max-width: 400px;
+}
+
+.ant-search-bar input {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  border: 1px solid #ddd;
+  border-radius: var(--cat-border-radius);
+  font-size: 0.95rem;
+  transition: var(--cat-transition);
+}
+
+.ant-search-bar input:focus {
   outline: none;
-  font-size: 12px;
-  padding: 5px;
-  margin: 0;
+  border-color: var(--cat-primary-color);
+  box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.15);
 }
 
-.search-icon_category {
-  font-size: 12px;
-  color: gray;
-  margin-left: 5px; 
+.ant-search-icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--cat-light-text);
 }
 
-/* Category Table */
-.category-table {
-  background: #fff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+/* ===== ADD CATEGORY FORM ===== */
+.ant-add-category-form {
+  background-color: var(--cat-light-bg);
+  padding: 1.5rem;
+  border-radius: var(--cat-border-radius);
+  margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  animation: catFadeIn 0.3s ease-in-out;
 }
 
-.category-table table {
+@keyframes catFadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.ant-add-category-form input {
+  padding: 0.75rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: var(--cat-border-radius);
+  font-size: 0.95rem;
+  transition: var(--cat-transition);
+}
+
+.ant-add-category-form input:focus {
+  outline: none;
+  border-color: var(--cat-primary-color);
+  box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.15);
+}
+
+/* ===== TABLE STYLING ===== */
+.ant-category-table {
+  overflow-x: auto;
+  border-radius: var(--cat-border-radius);
+  box-shadow: var(--cat-box-shadow);
+  margin-bottom: 2rem;
+}
+
+.ant-category-table table {
   width: 100%;
   border-collapse: collapse;
+  font-size: 0.95rem;
 }
 
-.category-table th,
-.category-table td {
+.ant-category-table thead {
+  background-color: var(--cat-green-header);
+  color: white;
+}
+
+.ant-category-table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+}
+
+.ant-category-table tbody tr {
+  transition: var(--cat-transition);
+  border-bottom: 1px solid #eee;
+}
+
+.ant-category-table tbody tr:hover {
+  background-color: rgba(77, 116, 77, 0.05);
+}
+
+.ant-category-table td {
+  padding: 1rem;
+  color: var(--cat-medium-text);
+}
+
+.ant-category-table td input {
+  width: 100%;
+  padding: 0.5rem;
   border: 1px solid #ddd;
-  padding: 12px;
-  text-align: center;
+  border-radius: 4px;
+  font-size: 0.95rem;
 }
 
-.category-table th {
-  background: #f5f5f5;
-  font-weight: bold;
+.ant-category-table td input:focus {
+  outline: none;
+  border-color: var(--cat-primary-color);
 }
 
-/* Edit and Delete Buttons */
-.edit-btn_category,
-.delete-btn_category {
-  padding: 8px;
-  border-radius: 5px;
+/* ===== BUTTON STYLING ===== */
+.ant-edit-btn, .ant-delete-btn, .ant-save-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
   border: none;
+  border-radius: 50%;
+  margin-right: 0.5rem;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: var(--cat-transition);
 }
 
-.edit-btn_category {
-  background-color: #007bff;
+.ant-edit-btn {
+  background-color: var(--cat-light-bg);
+  color: var(--cat-green-header);
+}
+
+.ant-edit-btn:hover {
+  background-color: var(--cat-green-header);
   color: white;
 }
 
-.edit-btn_category:hover {
-  background-color: #0056b3;
+.ant-delete-btn {
+  background-color: var(--cat-light-bg);
+  color: var(--cat-danger);
 }
 
-.delete-btn_category {
-  background-color: red;
+.ant-delete-btn:hover {
+  background-color: var(--cat-danger);
   color: white;
 }
 
-.delete-btn_category:hover {
-  background-color: darkred;
+.ant-save-btn {
+  background-color: var(--cat-success);
+  color: white;
+  width: auto;
+  height: auto;
+  border-radius: var(--cat-border-radius);
+  padding: 0.75rem 1.25rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  display: flex;
+  gap: 8px;
 }
 
-/* Pagination */
-.pagination_category {
+.ant-save-btn:hover {
+  background-color: var(--cat-success-hover);
+}
+
+/* ===== PAGINATION ===== */
+.ant-pagination {
   display: flex;
   justify-content: center;
-  margin-top: 15px;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
 }
 
-.pagination_category button {
-  padding: 8px 12px;
-  margin: 5px;
-  border-radius: 5px;
-  background-color: #ddd;
+.ant-pagination button {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ddd;
+  background-color: white;
+  color: var(--cat-medium-text);
+  border-radius: var(--cat-border-radius);
+  cursor: pointer;
+  transition: var(--cat-transition);
 }
 
-.pagination_category .active_category {
-  background-color: green;
+.ant-pagination button:hover {
+  border-color: var(--cat-green-header);
+  color: var(--cat-green-header);
+}
+
+.ant-pagination button.ant-active {
+  background-color: var(--cat-green-header);
   color: white;
+  border-color: var(--cat-green-header);
 }
 
-/* Mobile Responsiveness */
-@media screen and (max-width: 600px) {
-  .add-category-form {
-    width: 90%;
-  }
-
-  .button-container {
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  .ant-header-section {
     flex-direction: column;
+    align-items: stretch;
   }
+  
+  .ant-search-bar {
+    max-width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .ant-add-category-form {
+    grid-template-columns: 1fr;
+  }
+  
+  .ant-category-table th, 
+  .ant-category-table td {
+    padding: 0.75rem 0.5rem;
+  }
+  
+  .ant-category-title {
+    font-size: 1.5rem;
+  }
+  
+  .ant-pagination {
+    flex-wrap: wrap;
+  }
+}
 
-  .save-btn_category,
-  .cancel-btn_category {
-    width: 100%;
-    margin: 5px 0;
+@media (max-width: 576px) {
+  .category-container {
+    padding: 1.5rem 1rem;
+  }
+  
+  .ant-category-table table {
+    font-size: 0.85rem;
+  }
+  
+  .ant-edit-btn, .ant-delete-btn {
+    width: 32px;
+    height: 32px;
+    margin-right: 0.25rem;
   }
 }
