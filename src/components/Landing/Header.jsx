@@ -75,8 +75,8 @@ const Header = () => {
           </Link>
         </div>
 
-        {/* Middle Section: Navbar (Hidden for Admins) */}
-        {!isAdmin && (
+        {/* Middle Section: Navbar (Hidden if No Token) */}
+        {token && !isAdmin && (
           <nav className="navbar">
             <ul className="nav-links">
               <li>

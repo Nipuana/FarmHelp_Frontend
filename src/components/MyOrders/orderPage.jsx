@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import API from "../../API/api";
 import "../../css/OrderCss/orderPage.css";
 import { FaTimes, FaStar } from "react-icons/fa";
+import err_img from "../../images/failed_product.png";
+import load_gif from "../../images/Loading.gif";
 
 const OrderPage = () => {
   const [orders, setOrders] = useState([]);
@@ -158,7 +160,9 @@ const OrderPage = () => {
         </div>
       )}
 
-      {loading ? <p className="loading-text">Loading orders...</p> : (
+      {loading ? <p className="loading-text">
+        <img src={load_gif} alt="loading" />
+        </p>: (
         <div className="order-list">
           {sortedOrders.length === 0 ? (
             <p className="no-orders">You have not placed any orders yet.</p>

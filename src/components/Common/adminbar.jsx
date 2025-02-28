@@ -91,11 +91,6 @@ function Sidebar() {
                   <FaMoneyBillWave className="menu-icon_ab" /> Orders
                 </Link>
               </li>
-              <li>
-                <Link to="/CRUD5" className={`${isActive("/CRUD5") ? "active-link_ab" : ""}`}>
-                  <FaMoneyBillWave className="menu-icon_ab" /> Reviews
-                </Link>
-              </li>
             </ul>
           </ul>
         </nav>

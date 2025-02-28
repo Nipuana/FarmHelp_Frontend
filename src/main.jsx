@@ -14,7 +14,6 @@ import CRUD_User from "./components/CRUD-User/crudUserFinal.jsx";
 import CRUD_Category from "./components/CRUD-Category/crudCategoryFinal.jsx";
 import CRUD_Product from "./components/CRUD-Product/crudProductFinal.jsx";
 import CRUD_Order from "./components/CRUD-Order/crudOrderFinal.jsx";
-import CRUD_Review from "./components/CRUD-Review/crudReviewFinal.jsx";
 import AdminDash from './components/Admin/adminDashboard.jsx';
 
 
@@ -37,7 +36,7 @@ const HeaderWrapper = () => {
 
 const Layout = ({ children }) => {
     const location = useLocation();
-    const adminRoutes = ["/ad_dash", "/CRUD1", "/CRUD2", "/CRUD3", "/CRUD4", "/CRUD5"];
+    const adminRoutes = ["/ad_dash", "/CRUD1", "/CRUD2", "/CRUD3", "/CRUD4"];
     const isAdminPage = adminRoutes.includes(location.pathname);
 
     return (
@@ -91,7 +90,6 @@ createRoot(document.getElementById("root")).render(
                     <Route path="/CRUD2" element={<RoleBasedRoute element={<CRUD_Category />} role="admin" />} />
                     <Route path="/CRUD3" element={<RoleBasedRoute element={<CRUD_Product />} role="admin" />} />
                     <Route path="/CRUD4" element={<RoleBasedRoute element={<CRUD_Order />} role="admin" />} />
-                    <Route path="/CRUD5" element={<RoleBasedRoute element={<CRUD_Review />} role="admin" />} />
                     <Route path="/ad_dash" element={<RoleBasedRoute element={<AdminDash />} role="admin" />} />
 
                     {/* 404 Not Found */}

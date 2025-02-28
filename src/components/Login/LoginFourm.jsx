@@ -79,10 +79,7 @@ const LoginFourm = () => {
                     <button type="submit" className="login-btn" disabled={loading}>
                         {loading ? "Signing In..." : "Sign In"}
                     </button>
-                </form>
-                <div className="other-options">
-                    <button className="google-btn">Sign in with Google</button>
-                </div>
+                </form> 
                 <p className="signup-text">
                     Don’t you have an account? <a href="/Register">Sign up</a>
                 </p>

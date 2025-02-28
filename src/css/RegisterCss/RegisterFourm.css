@@ -13,7 +13,8 @@ body {
     padding: 40px;
     user-select: none;
     border-radius: 80px;
-    margin: 40px auto;
+    margin-left: 80px;
+    margin-top:15px;
     max-width: 1500px;
     width: 90%;
     box-sizing: border-box;

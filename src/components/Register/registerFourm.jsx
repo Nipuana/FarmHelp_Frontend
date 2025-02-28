@@ -81,10 +81,6 @@ const RegisterFourm = () => {
                         {loading ? "Registering..." : "Register"}
                     </button>
                 </form>
-                <div className="alternate-register_frm">
-                    <p>Or</p>
-                    <button className="google-btn">Sign up with Google</button>
-                </div>
                 <p className="footer-text">
                     Already have an account? <a href="/login">Log in</a>
                 </p>
